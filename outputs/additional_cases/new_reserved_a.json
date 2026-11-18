@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "summary": "The specification, workflow and Python follow the company rules.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {
+      "policy_76682_0": "reviewed",
+      "policy_76682_1": "reviewed",
+      "policy_76682_2": "reviewed",
+      "policy_76682_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "ticket_results": [
+    {
+      "ticket": {
+        "age_76682": 1320,
+        "attempts_76682": 3,
+        "urgent_76682": false,
+        "topic_76682": "billing"
+      },
+      "expected_route": "Escalation_76682",
+      "artifacts": {
+        "specification": "Escalation_76682",
+        "workflow": "Escalation_76682",
+        "code": "Escalation_76682"
+      }
+    },
+    {
+      "ticket": {
+        "age_76682": 1320,
+        "attempts_76682": 7,
+        "urgent_76682": true
+      },
+      "expected_route": "Manual_76682",
+      "artifacts": {
+        "specification": "Manual_76682",
+        "workflow": "Manual_76682",
+        "code": "Manual_76682"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 11.558044792000146,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "630cb1c4cb6279b3d5a4910c9d470f76206d57215ef33e2a9be5c164f4ae3f40",
+      "request_sha256": "4738307d38bacc0b51f71eab0e0af11b5884fe5aa1ce43b9cd58a573ac013259",
+      "request_bytes": 7933,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "4738307d38bacc0b51f71eab0e0af11b5884fe5aa1ce43b9cd58a573ac013259",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:03:59.454066Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2252,
+            "eval_count": 49
+          },
+          "response_sha256": "cf0fee6be36175fa1cb694b32dafb23e3c8bfe46fc56427256b8a900693540f1",
+          "response": "{\"coverage\": [\"policy_76682_0\",\"policy_76682_1\",\"policy_76682_2\",\"policy_76682_3\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 11.550070833998689
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_76682_0",
+        "policy_76682_1",
+        "policy_76682_2",
+        "policy_76682_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "46cc205670ba2a695464547524afccab8c1799a6379e0ae699141e96f28a3d7e"
+    }
+  }
+}

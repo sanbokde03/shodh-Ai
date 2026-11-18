@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "split": "holdout",
+  "reason": "New IDs, revisions, threshold and enum value preserve the ordered policy.",
+  "model_mode": "ok",
+  "source_evidence": [
+    "policy/paragraph/4",
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3"
+  ],
+  "target": null
+}

@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "summary": "The specification, workflow and Python follow the company rules.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {
+      "R1": "reviewed",
+      "R2": "reviewed",
+      "R3": "reviewed",
+      "R4": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 1.489061333999416,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+      "request_sha256": "4e00d6d8d037acf83f11da1521666b6af1fb79bf1489be4984dc37c408c16d5e",
+      "request_bytes": 7164,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "4e00d6d8d037acf83f11da1521666b6af1fb79bf1489be4984dc37c408c16d5e",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:47:32.760572Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1705,
+            "eval_count": 22
+          },
+          "response_sha256": "31c58fe9459888e463d62cd52c0c36de684053a9d6b66ce13e0da24afbb62c5d",
+          "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\": []}",
+          "result": "validated",
+          "seconds": 1.485954166000738
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "40c43e37514ebf93f0da7d78b21e453a906230a99e4427e4531fb39880aa6f97"
+    }
+  }
+}

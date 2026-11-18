@@ -1,0 +1,153 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "1 problem found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to Escalation_54579, but the workflow returns Normal_54579.",
+      "severity": "blocker",
+      "rule_ref": "policy_54579_2",
+      "artifact": "workflow",
+      "version": 4,
+      "location": "Workflow step 'check_age': condition",
+      "reference": "/nodes/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "new_policy/54579/paragraph/3",
+          "quote": "If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \"Escalation_54579\"."
+        }
+      ],
+      "correction": "Implement 'If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \"Escalation_54579\".' in workflow; preserve earlier exceptions and route this ticket to Escalation_54579.",
+      "counterexample": {
+        "ticket": {
+          "age_54579": 1440,
+          "attempts_54579": 2,
+          "topic_54579": "billing"
+        },
+        "expected_route": "Escalation_54579",
+        "actual_route": "Normal_54579"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "policy_54579_0": "reviewed",
+      "policy_54579_1": "reviewed",
+      "policy_54579_2": "reviewed",
+      "policy_54579_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "ticket_results": [
+    {
+      "ticket": {
+        "age_54579": 1440,
+        "attempts_54579": 2,
+        "urgent_54579": false,
+        "topic_54579": "billing"
+      },
+      "expected_route": "Escalation_54579",
+      "artifacts": {
+        "specification": "Escalation_54579",
+        "workflow": "Normal_54579",
+        "code": "Escalation_54579"
+      }
+    },
+    {
+      "ticket": {
+        "age_54579": 1440,
+        "attempts_54579": 7,
+        "urgent_54579": true
+      },
+      "expected_route": "Manual_54579",
+      "artifacts": {
+        "specification": "Manual_54579",
+        "workflow": "Manual_54579",
+        "code": "Manual_54579"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 8.079809708000539,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "d443e224626403e88c1a85441a151529d04670efd78124209a0680902460f91c",
+      "request_sha256": "4e1feae1f693c46a08b342e8e1ef2c46ab2a87119c7b4e3bcf817c011d435f67",
+      "request_bytes": 7754,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "4e1feae1f693c46a08b342e8e1ef2c46ab2a87119c7b4e3bcf817c011d435f67",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:04:53.005678Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2175,
+            "eval_count": 49
+          },
+          "response_sha256": "20bb04ecaf814a397b00ca343c17f5a921005d43d7054245e0339ea86a647851",
+          "response": "{\"coverage\": [\"policy_54579_0\",\"policy_54579_1\",\"policy_54579_2\",\"policy_54579_3\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 8.068730125000002
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_54579_0",
+        "policy_54579_1",
+        "policy_54579_2",
+        "policy_54579_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "dea2bc11203b811dc809720ef3a3c3fda4d62013312241b65dd1de007f5ea4d5"
+    }
+  }
+}

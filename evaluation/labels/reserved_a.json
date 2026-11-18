@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "split": "holdout",
+  "reason": "Seeded unseen IDs/order/threshold preserve all behavior.",
+  "source_evidence": [
+    "policy/paragraph/3",
+    "policy/paragraph/2",
+    "policy/paragraph/1",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": null
+}

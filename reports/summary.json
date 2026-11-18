@@ -1,0 +1,288 @@
+{
+  "model": "Frozen evaluation: fake only. Separate development-only live smoke reports are not a real-model benchmark.",
+  "baseline": {
+    "valid_total": 7,
+    "total": 24,
+    "correct": 22,
+    "false_passes": 1,
+    "false_blocks": 0,
+    "valid_incomplete": 0,
+    "calls": 26,
+    "retries": 3,
+    "defective_total": 10,
+    "defective_incomplete": 0,
+    "incomplete_total": 7,
+    "incomplete_incomplete": 6,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "total": 13,
+      "counterexamples_independently_replayed": 13,
+      "counterexamples_correct": 13,
+      "target_total": 10,
+      "target_found": 3
+    },
+    "runtime_seconds": 0.016668582007696386
+  },
+  "final": {
+    "valid_total": 7,
+    "total": 24,
+    "correct": 24,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "valid_incomplete": 0,
+    "calls": 25,
+    "retries": 3,
+    "defective_total": 10,
+    "defective_incomplete": 0,
+    "incomplete_total": 7,
+    "incomplete_incomplete": 7,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "total": 15,
+      "counterexamples_independently_replayed": 15,
+      "counterexamples_correct": 15,
+      "target_total": 10,
+      "target_found": 10
+    },
+    "runtime_seconds": 0.023394708994601388
+  },
+  "ablation": {
+    "valid_total": 7,
+    "total": 24,
+    "correct": 7,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "valid_incomplete": 7,
+    "calls": 25,
+    "retries": 3,
+    "defective_total": 10,
+    "defective_incomplete": 10,
+    "incomplete_total": 7,
+    "incomplete_incomplete": 7,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "target_total": 10,
+      "target_found": 0
+    },
+    "runtime_seconds": 0.01377620802668389
+  },
+  "holdout": {
+    "correct": 8,
+    "total": 8,
+    "scope": "Historical regression only; no new unseen cases in v0.2.1, v0.3.0 or v0.4.0"
+  },
+  "regressions": [
+    {
+      "name": "absent_field_vs_null",
+      "baseline": "PASS",
+      "final": "CHANGES_REQUIRED",
+      "expected": "CHANGES_REQUIRED"
+    },
+    {
+      "name": "source_citation_misattribution",
+      "baseline": "PASS",
+      "final": "INCOMPLETE",
+      "expected": "INCOMPLETE"
+    }
+  ],
+  "interpretation": "The original 20 status labels tie; four newly frozen variants test the audit fixes. The two original debugging probes remain separate development evidence. Primary-location scoring is now strict.",
+  "holdout_limitations": "Four fresh concrete variants frozen after the audit fixes. Families are known; inputs/results excluded from tuning. Original four holdouts are now historical. All eight reserved cases have since been exposed; current reruns are historical regression checks.",
+  "markdown_development": {
+    "metrics": {
+      "valid_total": 7,
+      "total": 24,
+      "correct": 24,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "valid_incomplete": 0,
+      "calls": 25,
+      "retries": 3,
+      "defective_total": 10,
+      "defective_incomplete": 0,
+      "incomplete_total": 7,
+      "incomplete_incomplete": 7,
+      "finding_quality": {
+        "unsupported_evidence_or_identical_routes": 0,
+        "total": 15,
+        "counterexamples_independently_replayed": 15,
+        "counterexamples_correct": 15,
+        "target_total": 10,
+        "target_found": 10
+      },
+      "runtime_seconds": 0.023747583014483098
+    },
+    "unresolved_source_texts": 2,
+    "scope": "Inspected translations of the same 24 cases, not fresh holdouts. Supported rules have equal parsed meaning and all other data is identical. Unresolved prose remains unresolved; its equivalence is not claimed."
+  },
+  "live_development": {
+    "scope": "Five inspected development cases; not held-out model accuracy or a production benchmark.",
+    "configuration": {
+      "model": "qwen3.5:9b",
+      "temperature": 0,
+      "timeout_seconds": 90,
+      "max_attempts": 2,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": false
+    },
+    "metrics": {
+      "total": 5,
+      "correct": 5,
+      "valid_total": 3,
+      "valid_incomplete": 0,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "model_calls": 5,
+      "model_retries": 0,
+      "validated_model_reports": 5,
+      "ambiguity_judgments_correct": 5,
+      "runtime_seconds": 95.48813237497234,
+      "defective_total": 1,
+      "defective_incomplete": 0,
+      "incomplete_total": 1,
+      "incomplete_incomplete": 1
+    },
+    "verification": "Replayed with the archived pre-fix prompt/schema/implementation, not the current policy. No new inference."
+  },
+  "historical_live_replay": {
+    "scope": "Historical observations replayed with pre-usability-fixes.zip and their original prompt/schema. No new inference and no claim about current-model accuracy.",
+    "original_live_development": {
+      "scope": "Five inspected development cases; not held-out model accuracy or a production benchmark.",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "metrics": {
+        "total": 5,
+        "correct": 5,
+        "valid_total": 3,
+        "valid_incomplete": 0,
+        "false_passes": 0,
+        "false_blocks": 0,
+        "model_calls": 5,
+        "model_retries": 0,
+        "validated_model_reports": 5,
+        "ambiguity_judgments_correct": 5,
+        "runtime_seconds": 95.48813237497234,
+        "defective_total": 1,
+        "defective_incomplete": 0,
+        "incomplete_total": 1,
+        "incomplete_incomplete": 1
+      }
+    },
+    "pre_fix_public_outputs": 24,
+    "pre_fix_validated_responses_replayed": 22,
+    "preserved_failure": "valid_unusual_units unnecessarily returned INCOMPLETE before the fix"
+  },
+  "public_live_development": {
+    "scope": "Saved inspected development reviews of the Markdown scenarios; offline replay is not new model inference. Three historical fault-injection filenames do not force failures during live reviews.",
+    "outputs": 24,
+    "statuses": {
+      "PASS": 10,
+      "CHANGES_REQUIRED": 10,
+      "INCOMPLETE": 4
+    },
+    "validated_responses_replayed": 22,
+    "saved_model_calls": 22,
+    "saved_retries": 0,
+    "sum_saved_review_seconds": 84.52565004200005,
+    "ambiguity_fix": {
+      "before": "INCOMPLETE (preserved in pre_usability_outputs.json)",
+      "after": "PASS",
+      "scope": "Inspected development correction, not held-out accuracy"
+    }
+  },
+  "markdown_ticket_demo": {
+    "status": "PASS",
+    "ticket_results": [
+      {
+        "ticket": {
+          "category": "billing",
+          "urgent": false,
+          "waiting": 30
+        },
+        "expected_route": "escalation",
+        "artifacts": {
+          "specification": "escalation",
+          "workflow": "escalation",
+          "code": "escalation"
+        }
+      },
+      {
+        "ticket": {
+          "urgent": true,
+          "waiting": 5
+        },
+        "expected_route": "manual",
+        "artifacts": {
+          "specification": "manual",
+          "workflow": "manual",
+          "code": "manual"
+        }
+      }
+    ],
+    "resources": {
+      "seconds": 5.647876917000758,
+      "model_calls": 1,
+      "model_retries": 0
+    },
+    "verification": "Saved real demonstration replayed offline against matching input/request hashes"
+  },
+  "additional_reserved_cases": {
+    "scope": "First evaluation of eight new procedural holdouts frozen after usability fixes; families and generator known to the AI author, not a blinded or human-audited benchmark. All concrete cases become exposed after this run.",
+    "seed": 2026111801,
+    "manifest_sha256": "6058c74379c1490f7229a8f6cafa56fc60780c2fba0bfbde95dd9774e0bbb5f9",
+    "first_offline": {
+      "total": 8,
+      "correct": 8,
+      "valid_total": 2,
+      "valid_incomplete": 0,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "calls": 7,
+      "retries": 0,
+      "defective_total": 4,
+      "defective_incomplete": 0,
+      "incomplete_total": 2,
+      "incomplete_incomplete": 2,
+      "finding_quality": {
+        "counterexamples": 5,
+        "counterexamples_correct": 5,
+        "unsupported_findings": 0,
+        "target_total": 4,
+        "target_found": 4
+      },
+      "runtime_seconds": 0.04410687600102392
+    },
+    "first_live": {
+      "total": 8,
+      "correct": 8,
+      "valid_total": 2,
+      "valid_incomplete": 0,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "calls": 8,
+      "retries": 1,
+      "defective_total": 4,
+      "defective_incomplete": 0,
+      "incomplete_total": 2,
+      "incomplete_incomplete": 2,
+      "finding_quality": {
+        "counterexamples": 5,
+        "counterexamples_correct": 5,
+        "unsupported_findings": 0,
+        "target_total": 4,
+        "target_found": 4
+      },
+      "runtime_seconds": 77.72259854000367
+    },
+    "verification": "Frozen implementation and inputs/labels/protocol hashes checked; first results preserved. Current reruns/replays are exposed historical checks, not new holdouts."
+  }
+}

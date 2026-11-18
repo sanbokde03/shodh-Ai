@@ -1,0 +1,89 @@
+{
+  "model": "fake only; live semantic performance unmeasured",
+  "baseline": {
+    "valid_total": 6,
+    "total": 20,
+    "correct": 20,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "valid_incomplete": 0,
+    "calls": 22,
+    "retries": 3,
+    "defective_total": 8,
+    "defective_incomplete": 0,
+    "incomplete_total": 6,
+    "incomplete_incomplete": 6,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "total": 12,
+      "counterexamples_independently_replayed": 12,
+      "counterexamples_correct": 12,
+      "target_total": 8,
+      "target_found": 8
+    },
+    "runtime_seconds": 0.1188265000237152
+  },
+  "final": {
+    "valid_total": 6,
+    "total": 20,
+    "correct": 20,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "valid_incomplete": 0,
+    "calls": 22,
+    "retries": 3,
+    "defective_total": 8,
+    "defective_incomplete": 0,
+    "incomplete_total": 6,
+    "incomplete_incomplete": 6,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "total": 12,
+      "counterexamples_independently_replayed": 12,
+      "counterexamples_correct": 12,
+      "target_total": 8,
+      "target_found": 8
+    },
+    "runtime_seconds": 0.058372416999191046
+  },
+  "ablation": {
+    "valid_total": 6,
+    "total": 20,
+    "correct": 6,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "valid_incomplete": 6,
+    "calls": 22,
+    "retries": 3,
+    "defective_total": 8,
+    "defective_incomplete": 8,
+    "incomplete_total": 6,
+    "incomplete_incomplete": 6,
+    "finding_quality": {
+      "unsupported_evidence_or_identical_routes": 0,
+      "target_total": 8,
+      "target_found": 0
+    },
+    "runtime_seconds": 0.04837803990812972
+  },
+  "holdout": {
+    "correct": 4,
+    "total": 4
+  },
+  "regressions": [
+    {
+      "name": "absent_field_vs_null",
+      "baseline": "PASS",
+      "final": "CHANGES_REQUIRED",
+      "expected": "CHANGES_REQUIRED"
+    },
+    {
+      "name": "source_citation_misattribution",
+      "baseline": "PASS",
+      "final": "INCOMPLETE",
+      "expected": "INCOMPLETE"
+    }
+  ],
+  "interpretation": "Baseline and final can tie on the frozen cases. Improvements on the two later development probes are separate evidence, not held-out gains.",
+  "holdout_limitations": "The generator's scenario families are known. Four concrete bundles are excluded from development runs and first inspected only at final evaluation. This is procedural holdout, not a blinded third-party benchmark."
+}

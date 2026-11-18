@@ -1,0 +1,21 @@
+{
+  "status": "INCOMPLETE",
+  "kind": "incomplete",
+  "reason": "The source does not define too long; implementation values cannot supply the missing cutoff.",
+  "target": null,
+  "oracle": {
+    "age": "age_89567",
+    "tries": "attempts_89567",
+    "urgent": "urgent_89567",
+    "topic": "topic_89567",
+    "threshold_seconds": 1500,
+    "minimum": 2,
+    "priority_minimum": 8,
+    "routes": [
+      "Manual_89567",
+      "Priority_89567",
+      "Escalation_89567",
+      "Normal_89567"
+    ]
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "id": "valid_renamed_pair",
+  "revision": 1,
+  "fields": {
+    "category": {
+      "type": "enum",
+      "values": [
+        "billing",
+        "technical"
+      ]
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": [
+    {
+      "id": "policy_94",
+      "order": 3,
+      "version": 1,
+      "location": "policy/paragraph/4",
+      "text": "OTHERWISE THEN normal"
+    },
+    {
+      "id": "policy_93",
+      "order": 2,
+      "version": 1,
+      "location": "policy/paragraph/3",
+      "text": "IF waiting >= 30 minutes THEN escalation"
+    },
+    {
+      "id": "policy_92",
+      "order": 1,
+      "version": 1,
+      "location": "policy/paragraph/2",
+      "text": "IF urgent = true THEN priority"
+    },
+    {
+      "id": "policy_91",
+      "order": 0,
+      "version": 1,
+      "location": "policy/paragraph/1",
+      "text": "IF category IS MISSING THEN manual"
+    }
+  ],
+  "specification": {
+    "version": 1,
+    "rules": [
+      {
+        "id": "S4",
+        "rule_ref": "policy_94",
+        "order": 3,
+        "when": true,
+        "route": "normal"
+      },
+      {
+        "id": "S1",
+        "rule_ref": "policy_91",
+        "order": 0,
+        "when": {
+          "field": "category",
+          "op": "missing"
+        },
+        "route": "manual"
+      },
+      {
+        "id": "S3",
+        "rule_ref": "policy_93",
+        "order": 2,
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 30,
+          "unit": "minutes"
+        },
+        "route": "escalation"
+      },
+      {
+        "id": "S2",
+        "rule_ref": "policy_92",
+        "order": 1,
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        },
+        "route": "priority"
+      }
+    ]
+  },
+  "workflow": {
+    "version": 1,
+    "entry": "n1",
+    "nodes": [
+      {
+        "id": "out_manual",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "n1",
+        "kind": "decision",
+        "rule_ref": "policy_91",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        },
+        "true": "out_manual",
+        "false": "n2",
+        "snippet_id": "main"
+      },
+      {
+        "id": "out_normal",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "id": "out_escalation",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "out_priority",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "n3",
+        "kind": "decision",
+        "rule_ref": "policy_93",
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 30,
+          "unit": "minutes"
+        },
+        "true": "out_escalation",
+        "false": "out_normal"
+      },
+      {
+        "id": "n2",
+        "kind": "decision",
+        "rule_ref": "policy_92",
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        },
+        "true": "out_priority",
+        "false": "n3"
+      }
+    ]
+  },
+  "snippets": [
+    {
+      "id": "main",
+      "version": 1,
+      "code": "def route(ticket):\n    if ticket.get(\"category\") is None:\n        return \"manual\"\n    if ticket.get(\"urgent\") == True:\n        return \"priority\"\n    if ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 30:\n        return \"escalation\"\n    return \"normal\"\n"
+    }
+  ],
+  "approvals": []
+}

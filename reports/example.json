@@ -1,0 +1,293 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "2 evidenced blocker(s); 0 unreviewed scope item(s).",
+  "findings": [
+    {
+      "severity": "blocker",
+      "kind": "behavior_mismatch",
+      "rule_ref": "R3",
+      "artifact": "specification",
+      "version": 1,
+      "location": "/rules/2",
+      "message": "Expected escalation; observed normal in supported semantics.",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "IF waiting >= 30 minutes THEN escalation"
+        },
+        {
+          "artifact": "specification",
+          "version": 1,
+          "location": "/rules/0",
+          "quote": "{\"id\": \"S1\", \"order\": 0, \"route\": \"manual\", \"rule_ref\": \"R1\", \"when\": {\"field\": \"category\", \"op\": \"missing\"}}"
+        },
+        {
+          "artifact": "specification",
+          "version": 1,
+          "location": "/rules/1",
+          "quote": "{\"id\": \"S2\", \"order\": 1, \"route\": \"priority\", \"rule_ref\": \"R2\", \"when\": {\"field\": \"urgent\", \"op\": \"eq\", \"value\": true}}"
+        },
+        {
+          "artifact": "specification",
+          "version": 1,
+          "location": "/rules/2",
+          "quote": "{\"id\": \"S3\", \"order\": 2, \"route\": \"escalation\", \"rule_ref\": \"R3\", \"when\": {\"field\": \"waiting\", \"op\": \"gt\", \"unit\": \"minutes\", \"value\": 30}}"
+        },
+        {
+          "artifact": "specification",
+          "version": 1,
+          "location": "/rules/3",
+          "quote": "{\"id\": \"S4\", \"order\": 3, \"route\": \"normal\", \"rule_ref\": \"R4\", \"when\": true}"
+        }
+      ],
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 30
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      },
+      "trace": [
+        "/rules/0",
+        "/rules/1",
+        "/rules/2",
+        "/rules/3"
+      ],
+      "correction": "Implement 'IF waiting >= 30 minutes THEN escalation' in specification; preserve earlier exceptions and route this ticket to escalation."
+    },
+    {
+      "severity": "blocker",
+      "kind": "behavior_mismatch",
+      "rule_ref": "R3",
+      "artifact": "workflow",
+      "version": 1,
+      "location": "/nodes/2",
+      "message": "Expected escalation; observed normal in supported semantics.",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "IF waiting >= 30 minutes THEN escalation"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/0",
+          "quote": "{\"false\": \"n2\", \"id\": \"n1\", \"kind\": \"decision\", \"rule_ref\": \"R1\", \"snippet_id\": \"main\", \"true\": \"out_manual\", \"when\": {\"field\": \"category\", \"op\": \"missing\"}}"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/1",
+          "quote": "{\"false\": \"n3\", \"id\": \"n2\", \"kind\": \"decision\", \"rule_ref\": \"R2\", \"true\": \"out_priority\", \"when\": {\"field\": \"urgent\", \"op\": \"eq\", \"value\": true}}"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/2",
+          "quote": "{\"false\": \"out_normal\", \"id\": \"n3\", \"kind\": \"decision\", \"rule_ref\": \"R3\", \"true\": \"out_escalation\", \"when\": {\"field\": \"waiting\", \"op\": \"gt\", \"unit\": \"minutes\", \"value\": 30}}"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/6",
+          "quote": "{\"id\": \"out_normal\", \"kind\": \"route\", \"route\": \"normal\"}"
+        }
+      ],
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 30
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      },
+      "trace": [
+        "/nodes/0",
+        "/nodes/1",
+        "/nodes/2",
+        "/nodes/6"
+      ],
+      "correction": "Implement 'IF waiting >= 30 minutes THEN escalation' in workflow; preserve earlier exceptions and route this ticket to escalation."
+    }
+  ],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "R1",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/1",
+            "quote": "IF category IS MISSING THEN manual"
+          }
+        ],
+        "status": "reviewed"
+      },
+      {
+        "rule_ref": "R2",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/2",
+            "quote": "IF urgent = true THEN priority"
+          }
+        ],
+        "status": "reviewed"
+      },
+      {
+        "rule_ref": "R3",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/3",
+            "quote": "IF waiting >= 30 minutes THEN escalation"
+          }
+        ],
+        "status": "reviewed"
+      },
+      {
+        "rule_ref": "R4",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/4",
+            "quote": "OTHERWISE THEN normal"
+          }
+        ],
+        "status": "reviewed"
+      }
+    ],
+    "unreviewed": [],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 96,
+    "reachable_nodes": [
+      "n1",
+      "n2",
+      "n3",
+      "out_escalation",
+      "out_manual",
+      "out_normal",
+      "out_priority"
+    ],
+    "unreachable_nodes": []
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "specification_semantics",
+      "status": "CHANGES_REQUIRED",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "workflow_semantics",
+      "status": "CHANGES_REQUIRED",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "code_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "model_review",
+      "status": "PASS"
+    }
+  ],
+  "model": {
+    "client": "synthetic-fake; not evidence of real-model performance",
+    "configuration": {
+      "model": "offline-fake",
+      "temperature": 0,
+      "timeout_seconds": 5,
+      "max_attempts": 2,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": null
+    },
+    "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+    "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+    "request_sha256": "d3f89be3b54c19f014bbabbe7428f6cec6dba502d9b4adcad91b158b10e554e2",
+    "request_bytes": 6049,
+    "attempts": [
+      {
+        "attempt": 1,
+        "response_sha256": "03c4a341efdfd63bd7bca0cd14f56d817ee231b3314eb818ab8989f9f4836383",
+        "response": "{\"coverage\": [\"R1\", \"R2\", \"R3\", \"R4\"], \"claims\": [{\"rule_ref\": \"R1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/1\", \"quote\": \"IF category IS MISSING THEN manual\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R4\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/4\", \"quote\": \"OTHERWISE THEN normal\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+        "result": "validated",
+        "seconds": 0.00015849998453631997
+      }
+    ],
+    "calls": 1,
+    "retries": 0,
+    "requested_rules": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "scope": "residual_ambiguity_of_formal_policy"
+  },
+  "provenance": {
+    "reviewer_version": "0.2.0",
+    "cache": "disabled",
+    "bundle_sha256": "4e95ab7d9fb59b5f764e48d621c018097c541a962375399e7a818bfd0fdd2e7a"
+  },
+  "ticket_results": [
+    {
+      "ticket": {
+        "category": "billing",
+        "urgent": false,
+        "waiting": 30
+      },
+      "expected_route": "escalation",
+      "artifacts": {
+        "specification": "normal",
+        "workflow": "normal",
+        "code": "escalation"
+      }
+    },
+    {
+      "ticket": {
+        "category": null,
+        "urgent": true,
+        "waiting": 40
+      },
+      "expected_route": "manual",
+      "artifacts": {
+        "specification": "manual",
+        "workflow": "manual",
+        "code": "manual"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 0.00473262500599958,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

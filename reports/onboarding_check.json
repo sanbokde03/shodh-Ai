@@ -1,0 +1,9 @@
+{
+  "environment": "New temporary extraction of the submitted ZIP; no venv, API key, Ollama or network used",
+  "first_run": "PASS, exit 0, JSON file created, stdout empty",
+  "custom_case": "Copied template and renamed case; PASS",
+  "deliberate_workflow_mistake": "CHANGES_REQUIRED, exit 1; exact 30-minute counterexample",
+  "json_output": "Both files parsed with python -m json.tool",
+  "full_assessment_verification": "Passed from extracted ZIP; 81 tests, frozen checks, additional reserved cases and saved response replay",
+  "application_changes": "None; production files remain the frozen implementation"
+}

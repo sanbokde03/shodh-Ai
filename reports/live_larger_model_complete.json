@@ -1,0 +1,148 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "0 evidenced blocker(s); 3 unreviewed scope item(s).",
+  "findings": [],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "R1",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/1",
+            "quote": "IF category IS MISSING THEN manual"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R2",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/2",
+            "quote": "IF urgent = true THEN priority"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R3",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/3",
+            "quote": "Escalate tickets that have waited too long."
+          }
+        ],
+        "status": "unreviewed"
+      },
+      {
+        "rule_ref": "R4",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/4",
+            "quote": "OTHERWISE THEN normal"
+          }
+        ],
+        "status": "partially_reviewed"
+      }
+    ],
+    "unreviewed": [
+      {
+        "scope": "source_language",
+        "reason": "Unsupported source text at '.'",
+        "rule_ref": "R3"
+      },
+      {
+        "scope": "exhaustive_semantics",
+        "reason": "Effective source policy is unresolved",
+        "rule_ref": null
+      },
+      {
+        "scope": "model_review",
+        "reason": "TimeoutError: timed out",
+        "rule_ref": null
+      }
+    ],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 0
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "source_language",
+      "status": "INCOMPLETE",
+      "detail": "Unsupported source text at '.'"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "exhaustive_semantics",
+      "status": "INCOMPLETE",
+      "detail": "Effective source policy is unresolved"
+    },
+    {
+      "check": "model_review",
+      "status": "INCOMPLETE",
+      "detail": "TimeoutError: timed out"
+    },
+    {
+      "check": "model_review",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "model": {
+    "client": "live-local-ollama",
+    "configuration": {
+      "model": "qwen3.5:9b",
+      "temperature": 0,
+      "timeout_seconds": 90,
+      "max_attempts": 1,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": false
+    },
+    "prompt_sha256": "48312c5fc2e087927160f000c99d15264e17e3f82828fd75c5770fb80a7d28c5",
+    "response_schema_sha256": "dd7b78a072962719ed80193d48976836aa22c6f2e0c62d6d2aff9860ea6d7a67",
+    "request_sha256": "bf4aeb9d4b7804c102175a247585a0cbcb8212347ca2c811b6a74a97100b3a24",
+    "request_bytes": 11995,
+    "attempts": [
+      {
+        "attempt": 1,
+        "result": "rejected",
+        "error": "TimeoutError: timed out",
+        "seconds": 90.37770562499645
+      }
+    ],
+    "calls": 1,
+    "retries": 0
+  },
+  "provenance": {
+    "reviewer_version": "0.2.0",
+    "cache": "disabled",
+    "bundle_sha256": "d20969cc9d7c0469da622ae9fbc6cc69d77ebd0a28dc7099bb6b58deed1c63a6"
+  },
+  "ticket_results": [],
+  "resources": {
+    "seconds": 90.40270112501457,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

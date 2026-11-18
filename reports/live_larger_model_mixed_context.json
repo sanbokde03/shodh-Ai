@@ -1,0 +1,999 @@
+{
+  "scope": "Five inspected development cases; not held-out model accuracy or a production benchmark.",
+  "configuration": {
+    "model": "qwen3.5:9b",
+    "temperature": 0,
+    "timeout_seconds": 90,
+    "max_attempts": 2,
+    "max_output_tokens": 2048,
+    "max_request_bytes": 200000,
+    "context_window": 32768,
+    "thinking": false
+  },
+  "metrics": {
+    "total": 5,
+    "correct": 2,
+    "valid_total": 3,
+    "valid_incomplete": 3,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "model_calls": 8,
+    "model_retries": 3,
+    "validated_model_reports": 4,
+    "ambiguity_judgments_correct": 1,
+    "runtime_seconds": 513.045743374998,
+    "defective_total": 1,
+    "defective_incomplete": 0,
+    "incomplete_total": 1,
+    "incomplete_incomplete": 1
+  },
+  "cases": [
+    {
+      "id": "valid_base",
+      "expected": "PASS",
+      "actual": "INCOMPLETE",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [],
+      "ambiguity_judgment_correct": false,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "model_review",
+              "reason": "TimeoutError: timed out",
+              "rule_ref": null
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE",
+            "detail": "TimeoutError: timed out"
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "a43e0835895db67fc42422248780ca0bd038165de3f23a69df9a906ffab0a20d",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "fd3cd1e90599c6ca822e8bb59806500b32dfdb3cc4f5a5482eef6a5d85c9184e",
+          "request_bytes": 12156,
+          "attempts": [
+            {
+              "attempt": 1,
+              "result": "rejected",
+              "error": "TimeoutError: timed out",
+              "seconds": 90.19153616699623
+            },
+            {
+              "attempt": 2,
+              "result": "rejected",
+              "error": "TimeoutError: timed out",
+              "seconds": 90.11492241700762
+            }
+          ],
+          "calls": 2,
+          "retries": 1,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "55b1a9e11fa9907d435b0dfaf730b2f703bc5d60a54efa866757b6db8171cfac"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 180.40868333299295,
+          "model_calls": 2,
+          "model_retries": 1
+        }
+      }
+    },
+    {
+      "id": "valid_approved",
+      "expected": "PASS",
+      "actual": "INCOMPLETE",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [
+        "R3"
+      ],
+      "ambiguity_judgment_correct": false,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 2,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                },
+                {
+                  "artifact": "approvals",
+                  "version": 2,
+                  "location": "/approvals/0",
+                  "quote": "{\"base_version\": 1, \"from_revision\": 1, \"id\": \"A1\", \"rule_ref\": \"R3\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"IF waiting >= 25 minutes THEN escalation\", \"to_revision\": 10, \"version\": 2}"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "model_ambiguity",
+              "reason": "The source text for R3 declares a threshold of '30 minutes', but the approved interpretation and specification define the condition as '>= 25'. The source text contains an undefined term (the value 30) that conflicts with the approved rule definition, creating a residual ambiguity regarding which numeric boundary is authoritative.",
+              "rule_ref": "R3"
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_ambiguity",
+            "status": "INCOMPLETE",
+            "detail": "The source text for R3 declares a threshold of '30 minutes', but the approved interpretation and specification define the condition as '>= 25'. The source text contains an undefined term (the value 30) that conflicts with the approved rule definition, creating a residual ambiguity regarding which numeric boundary is authoritative."
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "a43e0835895db67fc42422248780ca0bd038165de3f23a69df9a906ffab0a20d",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "a67eda585e18eb88ec25285eddaf97fadf6279fa0a14281900f88a6ad9e5876f",
+          "request_bytes": 12823,
+          "attempts": [
+            {
+              "attempt": 1,
+              "result": "rejected",
+              "error": "TimeoutError: timed out",
+              "seconds": 90.35081491700839
+            },
+            {
+              "attempt": 2,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:05:00.78649Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 3624,
+                "eval_count": 142
+              },
+              "response_sha256": "371ff658aeef2aea8657a9313ab32d3c026354d7315f3fdbb7d156c2e54af740",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"The source text for R3 declares a threshold of '30 minutes', but the approved interpretation and specification define the condition as '>= 25'. The source text contains an undefined term (the value 30) that conflicts with the approved rule definition, creating a residual ambiguity regarding which numeric boundary is authoritative.\"}]}",
+              "result": "validated",
+              "seconds": 64.10085474999505
+            }
+          ],
+          "calls": 2,
+          "retries": 1,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "4c1ed0e61b51ae122a9411c0d82a660a797162d5e1dfe23e9b0f6dced45dfd1c"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 154.68235395799275,
+          "model_calls": 2,
+          "model_retries": 1
+        }
+      }
+    },
+    {
+      "id": "valid_unusual_units",
+      "expected": "PASS",
+      "actual": "INCOMPLETE",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [
+        "R3"
+      ],
+      "ambiguity_judgment_correct": false,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "WHEN NOT (waiting < 30 minutes OR waiting IS MISSING) THEN escalation"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "model_ambiguity",
+              "reason": "The source text uses 'minutes' in the comparison ('waiting < 30 minutes') but the field_contract defines 'waiting' with unit 'minutes'. However, the specification artifact at /rules/2 explicitly introduces a conflicting unit 'seconds' for the same value (1800) which corresponds to 30 minutes. This creates a residual ambiguity regarding the intended unit of measurement in the source text versus the implementation/specification interpretation, as the source does not define the unit conversion or explicit unit string required by the contract's strict definition.",
+              "rule_ref": "R3"
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_ambiguity",
+            "status": "INCOMPLETE",
+            "detail": "The source text uses 'minutes' in the comparison ('waiting < 30 minutes') but the field_contract defines 'waiting' with unit 'minutes'. However, the specification artifact at /rules/2 explicitly introduces a conflicting unit 'seconds' for the same value (1800) which corresponds to 30 minutes. This creates a residual ambiguity regarding the intended unit of measurement in the source text versus the implementation/specification interpretation, as the source does not define the unit conversion or explicit unit string required by the contract's strict definition."
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "a43e0835895db67fc42422248780ca0bd038165de3f23a69df9a906ffab0a20d",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "58da7fa1a66dfbff6bf7c382973c4d6cd42765ae099725b8bcd52cbbca56c8e4",
+          "request_bytes": 12433,
+          "attempts": [
+            {
+              "attempt": 1,
+              "result": "rejected",
+              "error": "TimeoutError: timed out",
+              "seconds": 90.06382495901198
+            },
+            {
+              "attempt": 2,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:06:59.703678Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 3506,
+                "eval_count": 196
+              },
+              "response_sha256": "505c7205bf973d3acf158f73f048c71f634594cbb5873ad1ed68e0b44f377c7f",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"WHEN NOT (waiting < 30 minutes OR waiting IS MISSING) THEN escalation\", \"explanation\": \"The source text uses 'minutes' in the comparison ('waiting < 30 minutes') but the field_contract defines 'waiting' with unit 'minutes'. However, the specification artifact at /rules/2 explicitly introduces a conflicting unit 'seconds' for the same value (1800) which corresponds to 30 minutes. This creates a residual ambiguity regarding the intended unit of measurement in the source text versus the implementation/specification interpretation, as the source does not define the unit conversion or explicit unit string required by the contract's strict definition.\"}]}",
+              "result": "validated",
+              "seconds": 27.915897915983805
+            }
+          ],
+          "calls": 2,
+          "retries": 1,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "b68c5db99673e8d75afa38367ba1f053dd47700512c565bdbee1072e87b164c7"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 118.03681266700733,
+          "model_calls": 2,
+          "model_retries": 1
+        }
+      }
+    },
+    {
+      "id": "defect_code",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [
+        "R3"
+      ],
+      "ambiguity_judgment_correct": false,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "1 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "R3",
+            "artifact": "code",
+            "version": 1,
+            "location": "main:6",
+            "message": "Expected escalation; observed normal in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "policy/paragraph/3",
+                "quote": "IF waiting >= 30 minutes THEN escalation"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:2",
+                "quote": "    if ticket.get(\"category\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:4",
+                "quote": "    if ticket.get(\"urgent\") == True:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:6",
+                "quote": "    if ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 60:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:8",
+                "quote": "    return \"normal\""
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "category": "billing",
+                "waiting": 30
+              },
+              "expected_route": "escalation",
+              "actual_route": "normal"
+            },
+            "trace": [
+              "main:2",
+              "main:4",
+              "main:6",
+              "main:8"
+            ],
+            "correction": "Implement 'IF waiting >= 30 minutes THEN escalation' in code; preserve earlier exceptions and route this ticket to escalation."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "model_ambiguity",
+              "reason": "The code implements a threshold of 60 minutes, whereas the source rule R3 explicitly states '>= 30 minutes'. This creates a residual ambiguity regarding the intended escalation boundary: does the policy require implementation of the 30-minute threshold (as stated in source/spec) or is the 60-minute threshold an authorized deviation? The deterministic finding confirms this mismatch causes incorrect routing, leaving the semantic intent of R3 underspecified by the code.",
+              "rule_ref": "R3"
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 144,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "code_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "model_ambiguity",
+            "status": "INCOMPLETE",
+            "detail": "The code implements a threshold of 60 minutes, whereas the source rule R3 explicitly states '>= 30 minutes'. This creates a residual ambiguity regarding the intended escalation boundary: does the policy require implementation of the 30-minute threshold (as stated in source/spec) or is the 60-minute threshold an authorized deviation? The deterministic finding confirms this mismatch causes incorrect routing, leaving the semantic intent of R3 underspecified by the code."
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "a43e0835895db67fc42422248780ca0bd038165de3f23a69df9a906ffab0a20d",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "8016f1c829c9bc15e65562dad760276f27534188714a7c37fd035b4195de0e26",
+          "request_bytes": 13279,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:07:39.782979Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 3743,
+                "eval_count": 164
+              },
+              "response_sha256": "2b8dd0eb5cc50c8e739594c562a1a9d83709860e707dbf1a93256e68fa93eb86",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[{\"rule_ref\":\"R3\",\"judgment\":\"ambiguous\",\"artifact\":\"code\",\"version\":1,\"location\":\"main:6\",\"quote\":\"if ticket.get(\\\"waiting\\\") is not None and ticket.get(\\\"waiting\\\") >= 60:\", \"explanation\":\"The code implements a threshold of 60 minutes, whereas the source rule R3 explicitly states '>= 30 minutes'. This creates a residual ambiguity regarding the intended escalation boundary: does the policy require implementation of the 30-minute threshold (as stated in source/spec) or is the 60-minute threshold an authorized deviation? The deterministic finding confirms this mismatch causes incorrect routing, leaving the semantic intent of R3 underspecified by the code.\"}]}",
+              "result": "validated",
+              "seconds": 39.91009162500268
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "e0a299085bde532194ab91340f8dfe4436f8778822d08baaa0ed02ddd6e3a1af"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 40.00347966700792,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "incomplete_ambiguous",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "expected_ambiguous_rules": [
+        "R3"
+      ],
+      "actual_ambiguous_rules": [
+        "R3"
+      ],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 3 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "Escalate tickets that have waited too long."
+                }
+              ],
+              "status": "unreviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "source_language",
+              "reason": "Unsupported source text at '.'",
+              "rule_ref": "R3"
+            },
+            {
+              "scope": "exhaustive_semantics",
+              "reason": "Effective source policy is unresolved",
+              "rule_ref": null
+            },
+            {
+              "scope": "model_ambiguity",
+              "reason": "The rule lacks a quantitative criterion for 'too long'. The field_contract defines 'waiting' as a number in minutes but does not specify a threshold value. Without an explicit boundary (e.g., waiting > 60), the condition is underspecified.",
+              "rule_ref": "R3"
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 0
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "source_language",
+            "status": "INCOMPLETE",
+            "detail": "Unsupported source text at '.'"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "exhaustive_semantics",
+            "status": "INCOMPLETE",
+            "detail": "Effective source policy is unresolved"
+          },
+          {
+            "check": "model_ambiguity",
+            "status": "INCOMPLETE",
+            "detail": "The rule lacks a quantitative criterion for 'too long'. The field_contract defines 'waiting' as a number in minutes but does not specify a threshold value. Without an explicit boundary (e.g., waiting > 60), the condition is underspecified."
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "a43e0835895db67fc42422248780ca0bd038165de3f23a69df9a906ffab0a20d",
+          "response_schema_sha256": "0cfebd74d114ed084324caa52e580f5a96b7c208345fa1e1983fa2ca5e53fcc7",
+          "request_sha256": "d3b9b26114e47d8371c610e1924da5af49f87893b7b69fafafe4ecd37b73e0a6",
+          "request_bytes": 4681,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:07:59.157325Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 1016,
+                "eval_count": 120
+              },
+              "response_sha256": "9c048bce0fc3ca3a1e1fddb906e0ac942691b4a07b67aedad26aeeaf69f74a88",
+              "response": "{\"coverage\": [\"R3\"], \"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"Escalate tickets that have waited too long.\", \"explanation\": \"The rule lacks a quantitative criterion for 'too long'. The field_contract defines 'waiting' as a number in minutes but does not specify a threshold value. Without an explicit boundary (e.g., waiting > 60), the condition is underspecified.\"}]}",
+              "result": "validated",
+              "seconds": 19.851436500001
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R3"
+          ],
+          "scope": "unresolved_source_language"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "d20969cc9d7c0469da622ae9fbc6cc69d77ebd0a28dc7099bb6b58deed1c63a6"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 19.91441374999704,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    }
+  ]
+}

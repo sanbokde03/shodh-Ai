@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "holdout",
+  "reason": "At wait>=30 without urgency, code returns priority instead of escalation.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": {
+    "artifact": "code",
+    "location": "main:6",
+    "rule_ref": "R3"
+  }
+}

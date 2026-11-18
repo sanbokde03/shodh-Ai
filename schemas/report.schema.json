@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reviewer report",
+  "type": "object",
+  "required": ["status", "summary", "findings", "coverage", "check_results"],
+  "properties": {
+    "status": {"enum": ["PASS", "CHANGES_REQUIRED", "INCOMPLETE"]},
+    "summary": {"type": "string"},
+    "mode": {"enum": ["offline", "ai"]},
+    "audit": {"type": "object", "required": ["model", "provenance"], "properties": {"model": {"type": "object"}, "provenance": {"type": "object"}}},
+    "coverage": {"type": "object", "required": ["unreviewed"], "properties": {"unreviewed": {"type": "array"}}},
+    "check_results": {"type": "array", "items": {"type": "object", "required": ["check", "status"]}},
+    "findings": {"type": "array", "items": {
+      "type": "object",
+      "required": ["severity", "rule_ref", "artifact", "version", "location", "evidence", "correction"],
+      "properties": {
+        "severity": {"enum": ["blocker", "warning"]},
+        "kind": {"type": "string"},
+        "rule_ref": {"type": ["string", "null"]},
+        "artifact": {"type": "string"},
+        "version": {"type": "integer"},
+        "location": {"type": "string", "minLength": 1},
+        "location_description": {"type": "string", "minLength": 1},
+        "reference": {"type": "string"},
+        "problem": {"type": "string", "minLength": 1},
+        "correction": {"type": "string", "minLength": 1},
+        "evidence": {"type": "array", "minItems": 1, "items": {
+          "type": "object", "required": ["artifact", "version", "location", "quote"],
+          "properties": {"artifact": {"type": "string"}, "version": {"type": "integer"}, "location": {"type": "string"}, "quote": {"type": "string", "minLength": 1}}
+        }},
+        "counterexample": {"type": "object", "required": ["ticket", "expected_route", "actual_route"], "properties": {"ticket": {"type": "object"}}}
+      }
+    }}
+  }
+}

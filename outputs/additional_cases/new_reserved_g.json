@@ -1,0 +1,109 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "The review could not be completed. See coverage.unreviewed.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {
+      "policy_89567_0": "partially_reviewed",
+      "policy_89567_1": "partially_reviewed",
+      "policy_89567_2": "unreviewed",
+      "policy_89567_3": "partially_reviewed"
+    },
+    "unreviewed": [
+      {
+        "scope": "source_language",
+        "reason": "Give a numeric cutoff for age 89567; wording such as 'too long' is not defined",
+        "rule_ref": "policy_89567_2"
+      },
+      {
+        "scope": "exhaustive_semantics",
+        "reason": "Effective source policy is unresolved",
+        "rule_ref": null
+      },
+      {
+        "scope": "model_ambiguity",
+        "reason": "The term 'too long' for the numeric field age_89567 (unit: seconds) lacks a defined threshold or criterion in the source text or field_contract. The contract defines the type and unit but does not specify what value constitutes 'too long', leaving the condition interpretation null.",
+        "rule_ref": "policy_89567_2"
+      }
+    ]
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "source language",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "exhaustive semantics",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "model ambiguity",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "model review",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "resources": {
+    "seconds": 12.671454291001282,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "a3dd02d871d48473320898aeaef7f75d5be05743e65b05397d887693a0e5e2bc",
+      "request_sha256": "ad20894b6a35ef7da4080711e92d76ba978267f2639a76af712ea308b0715375",
+      "request_bytes": 5221,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "ad20894b6a35ef7da4080711e92d76ba978267f2639a76af712ea308b0715375",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:05:05.6839Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1196,
+            "eval_count": 181
+          },
+          "response_sha256": "a0fbb41db6fc8d16a893793a4ee2e0b59bc5b95d196c9e804fd4c9e3a90f1045",
+          "response": "{\"coverage\": [\"policy_89567_2\"], \"claims\": [{\"rule_ref\": \"policy_89567_2\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/89567/paragraph/3\", \"quote\": \"If age_89567 is too long and attempts_89567 is at least 2, send the ticket to \\\"Escalation_89567\\\".\", \"explanation\": \"The term 'too long' for the numeric field age_89567 (unit: seconds) lacks a defined threshold or criterion in the source text or field_contract. The contract defines the type and unit but does not specify what value constitutes 'too long', leaving the condition interpretation null.\"}]}",
+          "result": "validated",
+          "seconds": 12.669881666999572
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_89567_2"
+      ],
+      "scope": "unresolved_source_language"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "c5a18b10df111ce8f4e6e3d487226de3db3993ce589f5f782e24f53d584a245c"
+    }
+  }
+}

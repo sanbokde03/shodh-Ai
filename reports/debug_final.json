@@ -1,0 +1,437 @@
+{
+  "history": "Actual failures observed after preserving the first working checkpoint; not deliberately injected reviewer faults. Inputs are targeted synthetic regression probes.",
+  "examples": [
+    {
+      "name": "absent_field_vs_null",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "2 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "R4",
+            "artifact": "code",
+            "version": 1,
+            "location": "main:4",
+            "message": "Expected normal; observed ERROR:KeyError in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "policy/paragraph/4",
+                "quote": "OTHERWISE THEN normal"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:2",
+                "quote": "    if ticket.get(\"category\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:4",
+                "quote": "    if ticket[\"urgent\"] == True:"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "category": "billing"
+              },
+              "expected_route": "normal",
+              "actual_route": "ERROR:KeyError"
+            },
+            "trace": [
+              "main:2",
+              "main:4"
+            ],
+            "correction": "Implement 'OTHERWISE THEN normal' in code; preserve earlier exceptions and route this ticket to normal.",
+            "location_description": "Python snippet 'main', line 4"
+          },
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "R3",
+            "artifact": "code",
+            "version": 1,
+            "location": "main:4",
+            "message": "Expected escalation; observed ERROR:KeyError in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "policy/paragraph/3",
+                "quote": "IF waiting >= 30 minutes THEN escalation"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:2",
+                "quote": "    if ticket.get(\"category\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:4",
+                "quote": "    if ticket[\"urgent\"] == True:"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "category": "billing",
+                "waiting": 30
+              },
+              "expected_route": "escalation",
+              "actual_route": "ERROR:KeyError"
+            },
+            "trace": [
+              "main:2",
+              "main:4"
+            ],
+            "correction": "Implement 'IF waiting >= 30 minutes THEN escalation' in code; preserve earlier exceptions and route this ticket to escalation.",
+            "location_description": "Python snippet 'main', line 4"
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "8e29026a8423ff9e63a757eb7480c8e5df095f6e159fd5c655e81c5f7a292fde",
+          "request_bytes": 6462,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "8e29026a8423ff9e63a757eb7480c8e5df095f6e159fd5c655e81c5f7a292fde",
+              "response_sha256": "03c4a341efdfd63bd7bca0cd14f56d817ee231b3314eb818ab8989f9f4836383",
+              "response": "{\"coverage\": [\"R1\", \"R2\", \"R3\", \"R4\"], \"claims\": [{\"rule_ref\": \"R1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/1\", \"quote\": \"IF category IS MISSING THEN manual\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R4\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/4\", \"quote\": \"OTHERWISE THEN normal\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 5.7666999055072665e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "3bf2e0ee98aa3e543235838f51047348dc828731676eb4467a0cdad28302dbb6"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 0.001430625001376029,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      },
+      "diagnosis": "The partition enumerated null but not an absent key. Subscript access raises KeyError only for the absent key.",
+      "fix": "Enumerate absent and explicit null separately for every declared field.",
+      "regression_test": "test_absent_field_is_distinct_from_explicit_null_in_python"
+    },
+    {
+      "name": "source_citation_misattribution",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "model_review",
+              "reason": "Unsupported: Model attributed evidence to an unrelated or unbound rule",
+              "rule_ref": null
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE",
+            "detail": "Unsupported: Model attributed evidence to an unrelated or unbound rule"
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "8e29026a8423ff9e63a757eb7480c8e5df095f6e159fd5c655e81c5f7a292fde",
+          "request_bytes": 6462,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "8e29026a8423ff9e63a757eb7480c8e5df095f6e159fd5c655e81c5f7a292fde",
+              "response_sha256": "2810c3746ff33e4ff8f92b98614941dd3c64cd31eb3d919a3fe521e6bf9912f2",
+              "response": "{\"coverage\": [\"R1\", \"R2\", \"R3\", \"R4\"], \"claims\": [{\"rule_ref\": \"R1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R4\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/4\", \"quote\": \"OTHERWISE THEN normal\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "rejected",
+              "error": "Unsupported: Model attributed evidence to an unrelated or unbound rule",
+              "seconds": 6.791699706809595e-05
+            },
+            {
+              "attempt": 2,
+              "request_sha256": "061f9657393860f5fd057c60858c284b96641e8acdebd305169319515a260181",
+              "validation_feedback": "Unsupported: Model attributed evidence to an unrelated or unbound rule",
+              "response_sha256": "2810c3746ff33e4ff8f92b98614941dd3c64cd31eb3d919a3fe521e6bf9912f2",
+              "response": "{\"coverage\": [\"R1\", \"R2\", \"R3\", \"R4\"], \"claims\": [{\"rule_ref\": \"R1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"R4\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/4\", \"quote\": \"OTHERWISE THEN normal\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "rejected",
+              "error": "Unsupported: Model attributed evidence to an unrelated or unbound rule",
+              "seconds": 6.025000038789585e-05
+            }
+          ],
+          "calls": 2,
+          "retries": 1,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "55b1a9e11fa9907d435b0dfaf730b2f703bc5d60a54efa866757b6db8171cfac"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 0.0010390829993411899,
+          "model_calls": 2,
+          "model_retries": 1
+        }
+      },
+      "diagnosis": "A real quote was checked against the inventory, but not against the rule it claimed to support.",
+      "fix": "Bind source and approval anchors to each effective rule before validating claims.",
+      "regression_test": "test_model_cannot_relabel_an_unrelated_source_quote"
+    }
+  ]
+}

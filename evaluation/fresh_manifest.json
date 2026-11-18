@@ -1,0 +1,50 @@
+{
+  "seed": 20261117,
+  "created_utc": "2026-11-17T18:14:29.037454+00:00",
+  "label_method": "Direct manual policy reasoning encoded independently of reviewer outputs; AI-authored and not human-audited.",
+  "holdout_policy": "Four fresh concrete variants frozen after the audit fixes. Families are known; inputs/results excluded from tuning. Original four holdouts are now historical.",
+  "files": {
+    "evaluation/inputs/v3_a.json": "41dba9132f5ee0c0e6ba46759e8cdbb60843449f62fbe1ff2fb0dfeaa87327fe",
+    "evaluation/labels/v3_a.json": "b495e7e72349e7d8294eb91e666cf9034cea2f50d17bfdf20f9713b8c1fd6345",
+    "evaluation/inputs/v3_b.json": "3a19b4037d182942f02b1f59e2105d05114e14981ba0daa146d9c45f1c1023b6",
+    "evaluation/labels/v3_b.json": "c79270f5c07b0050e2d7b7e3f6b19654ae1a0793bf3aa81c8ba655e5fbead768",
+    "evaluation/inputs/v3_c.json": "be0f9527116aeeeddfe095a17310d258a9dd894407c3f90cb9347a821ecf6332",
+    "evaluation/labels/v3_c.json": "a9d76b3ca7ec08a47a3ddb98e67edfca9387872253e0663ccba571bc561d8f6c",
+    "evaluation/inputs/v3_d.json": "fa384b0a06333565f49858f3d92f14f87089d9ea250ecc5f6576264199c5972b",
+    "evaluation/labels/v3_d.json": "2a93f1c2db251997714fdefec61fb6bc25449e64527418b9cc99b85bf551a7ac",
+    "reviewer/__init__.py": "15d3b2ba4d81930e5750ec472570db7a8588c2478f1a6f0d5bf60c99bf167c36",
+    "reviewer/__main__.py": "74c1e20f97ee6dce1d6960b19ab160f022322cd723a43c9010ee5c20c3a28e0d",
+    "reviewer/contracts.py": "67d0ead7cf2b347ae0311fb7b669ab757073d28a2d97292c9614697b343bcff8",
+    "reviewer/engine.py": "08c57a43e169e44f7055216e65764e4f00eb6c7de2f61ee30ebf14eb6522102b",
+    "reviewer/language.py": "b93576c48e6ebb400c5d51b8fbebe2167de7f8e7825301067fccc9512981fc42",
+    "reviewer/model.py": "67b108a2c74e25d1efda8a1fb76cf156792118246c707e9c1c2b079de29d9891",
+    "reviewer/prompt.txt": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+    "schemas/bundle.schema.json": "1ca0391bfeb50c628ba0e6c09d409a6a02d3914cfc4cc623fe4a8f3b076722b0",
+    "schemas/model-report.schema.json": "30c708096765c5c9131c93601e58aa5a0d2c7c0c54835fb8566e88c15d32a4ae",
+    "schemas/report.schema.json": "4cfc44ec8bdb4e03dbbe4ee4cf6030021b1b99602f4760f07f521489fa3de38c",
+    "checkpoints/v02-reviewer.zip": "7270cc2c8348bc22080de379c65e1aaf520cfb87269a3192ff8dbd409dfc80a1",
+    "scripts/freeze_fresh_cases.py": "00a66c9ce4d639274fd0253839fed659521a82133fe8ce8eae799cf909524486"
+  },
+  "cases": [
+    {
+      "id": "v3_a",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "v3_b",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "v3_c",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "v3_d",
+      "split": "holdout",
+      "model_mode": "ok"
+    }
+  ]
+}

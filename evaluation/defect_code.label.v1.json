@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "development",
+  "reason": "Code waits until 60; metadata and workflow correctly say 30.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": {
+    "artifact": "code",
+    "location": "main:5",
+    "rule_ref": "R3"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "INCOMPLETE",
+  "kind": "incomplete",
+  "reason": "Approved and rejected records target the same rule version and active revision.",
+  "target": null,
+  "oracle": {
+    "age": "age_89854",
+    "tries": "attempts_89854",
+    "urgent": "urgent_89854",
+    "topic": "topic_89854",
+    "threshold_seconds": 840,
+    "minimum": 4,
+    "priority_minimum": 8,
+    "routes": [
+      "Manual_89854",
+      "Priority_89854",
+      "Escalation_89854",
+      "Normal_89854"
+    ]
+  }
+}

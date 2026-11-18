@@ -1,0 +1,35 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "The review could not be completed. See coverage.unreviewed.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {},
+    "unreviewed": [
+      {
+        "scope": "contracts_and_approvals",
+        "reason": "Unsupported: Conflicting approvals for R3: repeated sequence or target version",
+        "rule_ref": null
+      }
+    ]
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "resources": {
+    "seconds": 0.0008661249994474929,
+    "model_calls": 0,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {},
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "e132e9ae8bb5732113419c4f6fc68b381ec92b6f62a328a44caa8809b01dbed7"
+    }
+  }
+}

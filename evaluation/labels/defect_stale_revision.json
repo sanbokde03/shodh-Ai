@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "development",
+  "reason": "Approved 25 supersedes 30; wait=25 must escalate.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": {
+    "artifact": "specification",
+    "location": "/rules/2",
+    "rule_ref": "R3"
+  }
+}

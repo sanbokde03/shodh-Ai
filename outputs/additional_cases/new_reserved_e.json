@@ -1,0 +1,190 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "2 problems found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to Normal_71416, but the Python code returns ERROR:KeyError.",
+      "severity": "blocker",
+      "rule_ref": "policy_71416_3",
+      "artifact": "code",
+      "version": 6,
+      "location": "Python snippet 'router', line 4",
+      "reference": "router:4",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "new_policy/71416/paragraph/4",
+          "quote": "For all remaining tickets, send the ticket to \"Normal_71416\"."
+        },
+        {
+          "artifact": "code",
+          "version": 6,
+          "location": "router:4",
+          "quote": "    if ticket[\"urgent_71416\"] == True and (ticket.get(\"topic_71416\") == \"security\" or (ticket.get(\"attempts_71416\") is not None and ticket.get(\"attempts_71416\") >= 8)):"
+        }
+      ],
+      "correction": "Implement 'For all remaining tickets, send the ticket to \"Normal_71416\".' in code; preserve earlier exceptions and route this ticket to Normal_71416.",
+      "counterexample": {
+        "ticket": {
+          "topic_71416": "billing"
+        },
+        "expected_route": "Normal_71416",
+        "actual_route": "ERROR:KeyError"
+      }
+    },
+    {
+      "problem": "This ticket should go to Escalation_71416, but the Python code returns ERROR:KeyError.",
+      "severity": "blocker",
+      "rule_ref": "policy_71416_2",
+      "artifact": "code",
+      "version": 6,
+      "location": "Python snippet 'router', line 4",
+      "reference": "router:4",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "new_policy/71416/paragraph/3",
+          "quote": "If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \"Escalation_71416\"."
+        },
+        {
+          "artifact": "code",
+          "version": 6,
+          "location": "router:4",
+          "quote": "    if ticket[\"urgent_71416\"] == True and (ticket.get(\"topic_71416\") == \"security\" or (ticket.get(\"attempts_71416\") is not None and ticket.get(\"attempts_71416\") >= 8)):"
+        }
+      ],
+      "correction": "Implement 'If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \"Escalation_71416\".' in code; preserve earlier exceptions and route this ticket to Escalation_71416.",
+      "counterexample": {
+        "ticket": {
+          "age_71416": 1380,
+          "attempts_71416": 3,
+          "topic_71416": "billing"
+        },
+        "expected_route": "Escalation_71416",
+        "actual_route": "ERROR:KeyError"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "policy_71416_0": "reviewed",
+      "policy_71416_1": "reviewed",
+      "policy_71416_2": "reviewed",
+      "policy_71416_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "ticket_results": [
+    {
+      "ticket": {
+        "age_71416": 1380,
+        "attempts_71416": 3,
+        "urgent_71416": false,
+        "topic_71416": "billing"
+      },
+      "expected_route": "Escalation_71416",
+      "artifacts": {
+        "specification": "Escalation_71416",
+        "workflow": "Escalation_71416",
+        "code": "Escalation_71416"
+      }
+    },
+    {
+      "ticket": {
+        "age_71416": 1380,
+        "attempts_71416": 8,
+        "urgent_71416": true
+      },
+      "expected_route": "Manual_71416",
+      "artifacts": {
+        "specification": "Manual_71416",
+        "workflow": "Manual_71416",
+        "code": "Manual_71416"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 8.089951207999547,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "6658b1d6f50b790a3d46629e8cda6736ce9fa5c434f8e1fce142f8ace0e31b67",
+      "request_sha256": "029e47d447ab2d1018c6e66b7e18df9bc9f26f8a3710c367d3c6672f8ab63950",
+      "request_bytes": 7754,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "029e47d447ab2d1018c6e66b7e18df9bc9f26f8a3710c367d3c6672f8ab63950",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:04:44.904615Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2175,
+            "eval_count": 49
+          },
+          "response_sha256": "1a78569ea51d1293479e7d0dd6c4e3aac9144eae73370156c5ad130a7bb41839",
+          "response": "{\"coverage\": [\"policy_71416_0\",\"policy_71416_1\",\"policy_71416_2\",\"policy_71416_3\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 8.078726125000685
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_71416_0",
+        "policy_71416_1",
+        "policy_71416_2",
+        "policy_71416_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "0695fa7a162803cbff4d12e3406957fcb5c644c0c798b7921e272a469281e451"
+    }
+  }
+}

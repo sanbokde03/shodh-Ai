@@ -1,0 +1,14 @@
+{
+  "status": "INCOMPLETE",
+  "kind": "incomplete",
+  "split": "development",
+  "reason": "Model claims a nonexistent source anchor.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "invented",
+  "target": null
+}

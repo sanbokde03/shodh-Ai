@@ -1,0 +1,36 @@
+{
+  "scope": "Historical observations replayed with pre-usability-fixes.zip and their original prompt/schema. No new inference and no claim about current-model accuracy.",
+  "original_live_development": {
+    "scope": "Five inspected development cases; not held-out model accuracy or a production benchmark.",
+    "configuration": {
+      "model": "qwen3.5:9b",
+      "temperature": 0,
+      "timeout_seconds": 90,
+      "max_attempts": 2,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": false
+    },
+    "metrics": {
+      "total": 5,
+      "correct": 5,
+      "valid_total": 3,
+      "valid_incomplete": 0,
+      "false_passes": 0,
+      "false_blocks": 0,
+      "model_calls": 5,
+      "model_retries": 0,
+      "validated_model_reports": 5,
+      "ambiguity_judgments_correct": 5,
+      "runtime_seconds": 95.48813237497234,
+      "defective_total": 1,
+      "defective_incomplete": 0,
+      "incomplete_total": 1,
+      "incomplete_incomplete": 1
+    }
+  },
+  "pre_fix_public_outputs": 24,
+  "pre_fix_validated_responses_replayed": 22,
+  "preserved_failure": "valid_unusual_units unnecessarily returned INCOMPLETE before the fix"
+}

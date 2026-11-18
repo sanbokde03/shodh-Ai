@@ -1,0 +1,150 @@
+{
+  "seed": 1729,
+  "label_method": "Independent manual reasoning encoded before reviewer implementation; not reviewer-derived. AI-authored, not independently human-audited.",
+  "holdout_policy": "The generator's scenario families are known. Four concrete bundles are excluded from development runs and first inspected only at final evaluation. This is procedural holdout, not a blinded third-party benchmark.",
+  "files": {
+    "evaluation/inputs/valid_base.json": "ee4ae36b9d2277af04920b89507d48501167b7e4190d42c292d251280adacdfb",
+    "evaluation/labels/valid_base.json": "0c65b42ddf42b643e052e4a5c862258a056ee82d9e0734b43d92680ae72ae283",
+    "evaluation/inputs/valid_approved.json": "efd3e7b5dd2c86157a133eda9596f542322a4a5028bcebe5f76bc4e2f57aff93",
+    "evaluation/labels/valid_approved.json": "585fb16724a516b5b01ab55311dfe8d56458be76612fc30fb53effa9fd5e12b2",
+    "evaluation/inputs/valid_unusual_units.json": "4178ac3fa72ae6306d22c37e2397de59e5995aaf22b715c4ed77de9f3dd8e5f7",
+    "evaluation/labels/valid_unusual_units.json": "b9530d9523ee23f58c85e07549e0faeca75bf2c883ef8a96fee099c40bbf7307",
+    "evaluation/inputs/valid_unapproved_ignored.json": "c96ac08035b7b72e2c4471a627ecee12aaffbb3a5a41df02320531ce949d391f",
+    "evaluation/labels/valid_unapproved_ignored.json": "2ba837d62c0d2ebf8160b3a1cf0400fc0d78ee465b679ff427d47f57aa264116",
+    "evaluation/inputs/defect_omission.json": "8995c3ce87c3bdc9786b88a513bceb6a990f05465fda1e4a28ddb206b190c7d0",
+    "evaluation/labels/defect_omission.json": "9f1799d6bed792289af13aa65494ed4aafafbb17c951416a99c4cee43b872793",
+    "evaluation/inputs/defect_boundary.json": "7b79d10db77fe3fa3fd7a646de6680f0698a41ce509ef6d3089d359261a5cfbb",
+    "evaluation/labels/defect_boundary.json": "f257f3534a3617c98a1b37cc657bdacb784f07364b94b671fbd9cb2e6816f7b3",
+    "evaluation/inputs/defect_precedence.json": "2a8e49790382d2a6f4e275227ddb15e16f82c1083103c5c678cf3b6be19b0ced",
+    "evaluation/labels/defect_precedence.json": "746774b66c7679837389627d5d44b22548514440ec095b04e1025e976fafd3a6",
+    "evaluation/inputs/defect_branch.json": "0f896d2135f0d156da355285d99778841aa83c3a75522906425db54d646c60a0",
+    "evaluation/labels/defect_branch.json": "20d895e234540b1f28e3459fc81ff8b461ce9c35f71c25244c618093e8c52342",
+    "evaluation/inputs/defect_code.json": "7fc719f7516abd5232444541f3cc8ecb68085f6787446e10a6413f63c658a2b6",
+    "evaluation/labels/defect_code.json": "c58df299f62aae9c16b7edae0e0e1e1476b86701a4e1a486930492bee33189ac",
+    "evaluation/inputs/defect_stale_revision.json": "12ddc53d4004148db04c01d4680410642351d7241b3e0d1237ad8dbf24203371",
+    "evaluation/labels/defect_stale_revision.json": "10df48fd1819ce9730f2fe4e058800426962df19ae1c1116c57d0391909b0c16",
+    "evaluation/inputs/incomplete_approval_conflict.json": "bdd6ad5a27c9243b597a1cae4b85f47c7f5c41ef177da18864ece5fb5c11f9d4",
+    "evaluation/labels/incomplete_approval_conflict.json": "c761618ee633e24e981c425803c7a73f0337ac64a09ad2b5e9f4c31aeca76aa8",
+    "evaluation/inputs/incomplete_ambiguous.json": "b7dcd61a431ebc44294131c1fe490ded3310c60bc6803c10c9329759cb30c1de",
+    "evaluation/labels/incomplete_ambiguous.json": "839bd383624fbe05bcd184b341441e512520ef91b0579563ceb831be9956d035",
+    "evaluation/inputs/incomplete_timeout.json": "e64e0c7ba12191c0a7d4990b9a3f0175a482918f1aec66d7d22ed416e5b6aa57",
+    "evaluation/labels/incomplete_timeout.json": "e768477c024466ec0f2347b242623e85d2de66a2b785e467af3e71f3314df8fd",
+    "evaluation/inputs/incomplete_invented_citation.json": "d503d398d30c30ff27e8a39d514e846738bb618ec3e82bfe5189e9343bcf9303",
+    "evaluation/labels/incomplete_invented_citation.json": "fd836ea761f7fa1cd01ca1d6aa073f84631bfce48d9e51f0667ef9b5d383d0e3",
+    "evaluation/inputs/incomplete_injected_prose.json": "21f43bdb6911fd56644ee87daea455c694ce1522d9ee9838d621b7f9d0089bc9",
+    "evaluation/labels/incomplete_injected_prose.json": "56398a066701966de14cea70ae6a4e56b7ba8c19c36186e321bb3246aca68781",
+    "evaluation/inputs/valid_renamed_pair.json": "ac47ca8696c3ce249b5aea53f65c099064743cda9ec96435569b9691e81e83ef",
+    "evaluation/labels/valid_renamed_pair.json": "f6b854980e41af932b5ce6f367ac16cd3142487d3d576c37a6d9c8a61a828a02",
+    "evaluation/inputs/reserved_a.json": "f6c9660704e768871a3809ba9745be74e60d68303660fca533dc9ec7d0da1265",
+    "evaluation/labels/reserved_a.json": "c179e66cb7406b080a43839a82fe9d65dc1b8c6a842c19e504243239d8c06102",
+    "evaluation/inputs/reserved_b.json": "2dfff265ab4500a4d6b4ccd4481f7f1b5d53b4d411fb0ae52514f43d1ab74519",
+    "evaluation/labels/reserved_b.json": "e345a7739e5deee8dd3214746a9a19749c201cd17cc4fb6e8f57ebaa6d69ce4f",
+    "evaluation/inputs/reserved_c.json": "f333242e8f6901b78dc5cdc659ed9f51170e816a12b4e23757392490a140a048",
+    "evaluation/labels/reserved_c.json": "05ee02039cb530bac8d46e89a53d80fac8565fd8f968f643c99fd99001c8fee1",
+    "evaluation/inputs/reserved_d.json": "64d538a9464e23b0f55b1f250e2b0f00c80a78dbb01aa1242c0a11b1a1f74159",
+    "evaluation/labels/reserved_d.json": "21985517b4b72b59723033a5e8da760942718f44f775f0a26246e5fba5ff2fd4",
+    "scripts/generate_cases.py": "19b9fef6b0ee41a98fb28fc9cdeb5cfbfa2db2cd91c2aa89053be249d04c3d69"
+  },
+  "cases": [
+    {
+      "id": "valid_base",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "valid_approved",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "valid_unusual_units",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "valid_unapproved_ignored",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_omission",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_boundary",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_precedence",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_branch",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_code",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "defect_stale_revision",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "incomplete_approval_conflict",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "incomplete_ambiguous",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "incomplete_timeout",
+      "split": "development",
+      "model_mode": "timeout"
+    },
+    {
+      "id": "incomplete_invented_citation",
+      "split": "development",
+      "model_mode": "invented"
+    },
+    {
+      "id": "incomplete_injected_prose",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "valid_renamed_pair",
+      "split": "development",
+      "model_mode": "ok"
+    },
+    {
+      "id": "reserved_a",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "reserved_b",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "reserved_c",
+      "split": "holdout",
+      "model_mode": "ok"
+    },
+    {
+      "id": "reserved_d",
+      "split": "holdout",
+      "model_mode": "truncated"
+    }
+  ]
+}

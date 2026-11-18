@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-11-17T16:42:39.193447+00:00",
+  "python": "3.14.6",
+  "sha256": "a1889fef8d2c67322f9a466c74ff723d24c58a7bf9e5d04e7fe77d737470d8cc",
+  "files": {
+    "reviewer/__init__.py": "e688020e0b65e88648b566d6df7db4a4d31e4c8fa5a1443b23cb11cfb8b627a1",
+    "reviewer/prompt.txt": "30b83b0f1a0a6d86ffc3dce01bdc18e2692b3e2b3a8e6d2201ed630157c92c19",
+    "reviewer/model.py": "db79d68117c8eb5a8520b26ac5bd7b601d2fe72b3f52e1d71a69698a955c52cf",
+    "reviewer/engine.py": "ef2c978db9caa1651ca7a26d109897ae84d630dd66d2c1c2f6534b6635c1e847",
+    "reviewer/language.py": "36cb342cb3cddb7db69e52edb28feb0eb1e6457b9167fa654ebbebc971276a18",
+    "reviewer/contracts.py": "67d0ead7cf2b347ae0311fb7b669ab757073d28a2d97292c9614697b343bcff8",
+    "reviewer/__main__.py": "642f22037eb33b61fb732e66fa54a311162b4ea3b3b9f026aa17fa4c33f5c70f",
+    "schemas/bundle.schema.json": "1ca0391bfeb50c628ba0e6c09d409a6a02d3914cfc4cc623fe4a8f3b076722b0",
+    "tests/test_reviewer.py": "6d9a5f157360b8b50f8ecaab88d3209add4f07aa305b5898a0239aa1348ba24a"
+  },
+  "working_evidence": "17 unit tests passed; development statuses 16/16 before checkpoint. Holdouts not run.",
+  "dataset_manifest_sha256": "463ea7fc9a949d455c3a7a69eaf3e3c13c0edf959d6e6b3d8b897229333cd0fc"
+}

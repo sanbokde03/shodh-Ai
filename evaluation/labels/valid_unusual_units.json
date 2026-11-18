@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "split": "development",
+  "reason": "De Morgan formulation and 1800 seconds equal >=30 minutes, excluding missing.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": null
+}

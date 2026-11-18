@@ -1,0 +1,25 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "reason": "Categorized ticket without the urgent key should use normal, but Python raises KeyError.",
+  "target": {
+    "artifact": "code",
+    "rule_ref": "policy_71416_3",
+    "location": "router:4"
+  },
+  "oracle": {
+    "age": "age_71416",
+    "tries": "attempts_71416",
+    "urgent": "urgent_71416",
+    "topic": "topic_71416",
+    "threshold_seconds": 1380,
+    "minimum": 3,
+    "priority_minimum": 8,
+    "routes": [
+      "Manual_71416",
+      "Priority_71416",
+      "Escalation_71416",
+      "Normal_71416"
+    ]
+  }
+}

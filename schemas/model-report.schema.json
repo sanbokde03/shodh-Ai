@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": ["coverage", "claims"],
+  "additionalProperties": false,
+  "properties": {
+    "coverage": {"type": "array", "items": {"type": "string"}},
+    "claims": {
+      "type": "array", "maxItems": 128,
+      "items": {
+        "type": "object",
+        "required": ["rule_ref", "judgment", "artifact", "version", "location", "quote", "explanation"],
+        "additionalProperties": false,
+        "properties": {
+          "rule_ref": {"type": "string", "minLength": 1},
+          "judgment": {"enum": ["no_additional_issue", "ambiguous", "equivalent"]},
+          "artifact": {"type": "string", "minLength": 1},
+          "version": {"type": "integer"},
+          "location": {"type": "string", "minLength": 1},
+          "quote": {"type": "string", "minLength": 1},
+          "explanation": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

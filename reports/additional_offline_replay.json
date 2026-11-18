@@ -1,0 +1,1627 @@
+{
+  "scope": "First evaluation of eight new procedural holdouts frozen after usability fixes; families and generator known to the AI author, not a blinded or human-audited benchmark. All concrete cases become exposed after this run.",
+  "mode": "synthetic-offline",
+  "new_inference": false,
+  "seed": 2026111801,
+  "manifest_sha256": "6058c74379c1490f7229a8f6cafa56fc60780c2fba0bfbde95dd9774e0bbb5f9",
+  "configuration": {
+    "model": "offline-fake",
+    "temperature": 0,
+    "timeout_seconds": 5,
+    "max_attempts": 2,
+    "max_output_tokens": 2048,
+    "max_request_bytes": 200000,
+    "context_window": 32768,
+    "thinking": null
+  },
+  "metrics": {
+    "total": 8,
+    "correct": 8,
+    "valid_total": 2,
+    "valid_incomplete": 0,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "calls": 7,
+    "retries": 0,
+    "defective_total": 4,
+    "defective_incomplete": 0,
+    "incomplete_total": 2,
+    "incomplete_incomplete": 2,
+    "finding_quality": {
+      "counterexamples": 5,
+      "counterexamples_correct": 5,
+      "unsupported_findings": 0,
+      "target_total": 4,
+      "target_found": 4
+    },
+    "runtime_seconds": 0.04400966600951506
+  },
+  "cases": [
+    {
+      "id": "new_reserved_a",
+      "kind": "valid",
+      "expected": "PASS",
+      "actual": "PASS",
+      "correct": true,
+      "target_found": null,
+      "report": {
+        "status": "PASS",
+        "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_76682_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/76682/paragraph/1",
+                  "quote": "If topic_76682 is missing, send the ticket to \"Manual_76682\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_76682_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/76682/paragraph/2",
+                  "quote": "If urgent_76682 is yes and (topic_76682 is \"security\" or attempts_76682 is at least 7), send the ticket to \"Priority_76682\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_76682_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/76682/paragraph/3",
+                  "quote": "If not (age_76682 is less than 22 minutes or age_76682 is missing) and attempts_76682 is at least 3, send the ticket to \"Escalation_76682\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_76682_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/76682/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_76682\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "630cb1c4cb6279b3d5a4910c9d470f76206d57215ef33e2a9be5c164f4ae3f40",
+          "request_sha256": "4738307d38bacc0b51f71eab0e0af11b5884fe5aa1ce43b9cd58a573ac013259",
+          "request_bytes": 7933,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "4738307d38bacc0b51f71eab0e0af11b5884fe5aa1ce43b9cd58a573ac013259",
+              "response_sha256": "49aa3c31cd21f21eaf1593a9f074fceeb3e74c26b933ce2c12391fcda190deef",
+              "response": "{\"coverage\": [\"policy_76682_0\", \"policy_76682_1\", \"policy_76682_2\", \"policy_76682_3\"], \"claims\": [{\"rule_ref\": \"policy_76682_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/76682/paragraph/1\", \"quote\": \"If topic_76682 is missing, send the ticket to \\\"Manual_76682\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_76682_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/76682/paragraph/2\", \"quote\": \"If urgent_76682 is yes and (topic_76682 is \\\"security\\\" or attempts_76682 is at least 7), send the ticket to \\\"Priority_76682\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_76682_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/76682/paragraph/3\", \"quote\": \"If not (age_76682 is less than 22 minutes or age_76682 is missing) and attempts_76682 is at least 3, send the ticket to \\\"Escalation_76682\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_76682_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/76682/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_76682\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 5.991599755361676e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_76682_0",
+            "policy_76682_1",
+            "policy_76682_2",
+            "policy_76682_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "46cc205670ba2a695464547524afccab8c1799a6379e0ae699141e96f28a3d7e"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_76682": 1320,
+              "attempts_76682": 3,
+              "urgent_76682": false,
+              "topic_76682": "billing"
+            },
+            "expected_route": "Escalation_76682",
+            "artifacts": {
+              "specification": "Escalation_76682",
+              "workflow": "Escalation_76682",
+              "code": "Escalation_76682"
+            }
+          },
+          {
+            "ticket": {
+              "age_76682": 1320,
+              "attempts_76682": 7,
+              "urgent_76682": true
+            },
+            "expected_route": "Manual_76682",
+            "artifacts": {
+              "specification": "Manual_76682",
+              "workflow": "Manual_76682",
+              "code": "Manual_76682"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.007393957996100653,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_b",
+      "kind": "valid",
+      "expected": "PASS",
+      "actual": "PASS",
+      "correct": true,
+      "target_found": null,
+      "report": {
+        "status": "PASS",
+        "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_49227_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/49227/paragraph/1",
+                  "quote": "If topic_49227 is missing, send the ticket to \"Manual_49227\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_49227_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/49227/paragraph/2",
+                  "quote": "If urgent_49227 is yes and (topic_49227 is \"security\" or attempts_49227 is at least 7), send the ticket to \"Priority_49227\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_49227_2",
+              "version": 2,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/49227/paragraph/3",
+                  "quote": "If age_49227 is at least 19 minutes and attempts_49227 is at least 2, send the ticket to \"Escalation_49227\"."
+                },
+                {
+                  "artifact": "approvals",
+                  "version": 2,
+                  "location": "/approvals/0",
+                  "quote": "{\"base_version\": 1, \"from_revision\": 43, \"id\": \"approval_49227\", \"rule_ref\": \"policy_49227_2\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"If age_49227 is at least 16 minutes and attempts_49227 is at least 2, send the ticket to \\\"Escalation_49227\\\".\", \"to_revision\": 43, \"version\": 2}"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_49227_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/49227/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_49227\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "25cf8759fb6833c1432ff9e4d70b5650cb8c6dafd7446a697d253011ef4584ee",
+          "request_sha256": "60c5c4016d752af65431488b5e758e7206cc048003fbd601b3c65fda835304cb",
+          "request_bytes": 8126,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "60c5c4016d752af65431488b5e758e7206cc048003fbd601b3c65fda835304cb",
+              "response_sha256": "dbcadc69e55fd17f62ded2c3dcbdf003f44aa00a3245e8e47fe22c8aa20d8fd4",
+              "response": "{\"coverage\": [\"policy_49227_0\", \"policy_49227_1\", \"policy_49227_2\", \"policy_49227_3\"], \"claims\": [{\"rule_ref\": \"policy_49227_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/49227/paragraph/1\", \"quote\": \"If topic_49227 is missing, send the ticket to \\\"Manual_49227\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_49227_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/49227/paragraph/2\", \"quote\": \"If urgent_49227 is yes and (topic_49227 is \\\"security\\\" or attempts_49227 is at least 7), send the ticket to \\\"Priority_49227\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_49227_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"approvals\", \"version\": 2, \"location\": \"/approvals/0\", \"quote\": \"{\\\"base_version\\\": 1, \\\"from_revision\\\": 43, \\\"id\\\": \\\"approval_49227\\\", \\\"rule_ref\\\": \\\"policy_49227_2\\\", \\\"sequence\\\": 1, \\\"status\\\": \\\"approved\\\", \\\"text\\\": \\\"If age_49227 is at least 16 minutes and attempts_49227 is at least 2, send the ticket to \\\\\\\"Escalation_49227\\\\\\\".\\\", \\\"to_revision\\\": 43, \\\"version\\\": 2}\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_49227_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/49227/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_49227\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 6.920799933141097e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_49227_0",
+            "policy_49227_1",
+            "policy_49227_2",
+            "policy_49227_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "900ede108baa991009f935c4a7598885a6bffc78a1819fe05505327abed3fb34"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_49227": 960,
+              "attempts_49227": 2,
+              "urgent_49227": false,
+              "topic_49227": "billing"
+            },
+            "expected_route": "Escalation_49227",
+            "artifacts": {
+              "specification": "Escalation_49227",
+              "workflow": "Escalation_49227",
+              "code": "Escalation_49227"
+            }
+          },
+          {
+            "ticket": {
+              "age_49227": 960,
+              "attempts_49227": 7,
+              "urgent_49227": true
+            },
+            "expected_route": "Manual_49227",
+            "artifacts": {
+              "specification": "Manual_49227",
+              "workflow": "Manual_49227",
+              "code": "Manual_49227"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.007206542002677452,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_c",
+      "kind": "defective",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "correct": true,
+      "target_found": true,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "1 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "policy_95725_2",
+            "artifact": "workflow",
+            "version": 5,
+            "location": "/nodes/2",
+            "message": "Expected Escalation_95725; observed Normal_95725 in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "new_policy/95725/paragraph/3",
+                "quote": "If age_95725 is at least 26 minutes and attempts_95725 is at least 2, send the ticket to \"Escalation_95725\"."
+              },
+              {
+                "artifact": "workflow",
+                "version": 5,
+                "location": "/nodes/0",
+                "quote": "{\"false\": \"check_priority\", \"id\": \"check_topic\", \"kind\": \"decision\", \"rule_ref\": \"policy_95725_0\", \"snippet_id\": \"router\", \"true\": \"out_manual\", \"when\": {\"field\": \"topic_95725\", \"op\": \"missing\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 5,
+                "location": "/nodes/1",
+                "quote": "{\"false\": \"check_age\", \"id\": \"check_priority\", \"kind\": \"decision\", \"rule_ref\": \"policy_95725_1\", \"true\": \"out_priority\", \"when\": {\"args\": [{\"field\": \"urgent_95725\", \"op\": \"eq\", \"value\": true}, {\"args\": [{\"field\": \"topic_95725\", \"op\": \"eq\", \"value\": \"security\"}, {\"field\": \"attempts_95725\", \"op\": \"gte\", \"value\": 8}], \"op\": \"or\"}], \"op\": \"and\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 5,
+                "location": "/nodes/2",
+                "quote": "{\"false\": \"out_normal\", \"id\": \"check_age\", \"kind\": \"decision\", \"rule_ref\": \"policy_95725_2\", \"true\": \"out_escalation\", \"when\": {\"args\": [{\"field\": \"age_95725\", \"op\": \"gt\", \"unit\": \"seconds\", \"value\": 1560}, {\"field\": \"attempts_95725\", \"op\": \"gte\", \"value\": 2}], \"op\": \"and\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 5,
+                "location": "/nodes/6",
+                "quote": "{\"id\": \"out_normal\", \"kind\": \"route\", \"route\": \"Normal_95725\"}"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "age_95725": 1560,
+                "attempts_95725": 2,
+                "topic_95725": "billing"
+              },
+              "expected_route": "Escalation_95725",
+              "actual_route": "Normal_95725"
+            },
+            "trace": [
+              "/nodes/0",
+              "/nodes/1",
+              "/nodes/2",
+              "/nodes/6"
+            ],
+            "correction": "Implement 'If age_95725 is at least 26 minutes and attempts_95725 is at least 2, send the ticket to \"Escalation_95725\".' in workflow; preserve earlier exceptions and route this ticket to Escalation_95725."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_95725_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/95725/paragraph/1",
+                  "quote": "If topic_95725 is missing, send the ticket to \"Manual_95725\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_95725_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/95725/paragraph/2",
+                  "quote": "If urgent_95725 is yes and (topic_95725 is \"security\" or attempts_95725 is at least 8), send the ticket to \"Priority_95725\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_95725_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/95725/paragraph/3",
+                  "quote": "If age_95725 is at least 26 minutes and attempts_95725 is at least 2, send the ticket to \"Escalation_95725\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_95725_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/95725/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_95725\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "33588a107f5e395df0c0b567c310de083a258f0fe50b49b1781a841c4a082409",
+          "request_sha256": "693f1d320359c6a2a61cf60a825927a89e37e406f1a94a80a19ab584da427bed",
+          "request_bytes": 7754,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "693f1d320359c6a2a61cf60a825927a89e37e406f1a94a80a19ab584da427bed",
+              "response_sha256": "eda22e5975df8ca8198980bed88c5a18c85bdc27a55571d1bb7858a01857e070",
+              "response": "{\"coverage\": [\"policy_95725_0\", \"policy_95725_1\", \"policy_95725_2\", \"policy_95725_3\"], \"claims\": [{\"rule_ref\": \"policy_95725_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/95725/paragraph/1\", \"quote\": \"If topic_95725 is missing, send the ticket to \\\"Manual_95725\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_95725_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/95725/paragraph/2\", \"quote\": \"If urgent_95725 is yes and (topic_95725 is \\\"security\\\" or attempts_95725 is at least 8), send the ticket to \\\"Priority_95725\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_95725_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/95725/paragraph/3\", \"quote\": \"If age_95725 is at least 26 minutes and attempts_95725 is at least 2, send the ticket to \\\"Escalation_95725\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_95725_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/95725/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_95725\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 5.2209004934411496e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_95725_0",
+            "policy_95725_1",
+            "policy_95725_2",
+            "policy_95725_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "0794fb492c34f149dfe0a5f7288bd4fab3b9d67a15138af5affcfd019f279582"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_95725": 1560,
+              "attempts_95725": 2,
+              "urgent_95725": false,
+              "topic_95725": "billing"
+            },
+            "expected_route": "Escalation_95725",
+            "artifacts": {
+              "specification": "Escalation_95725",
+              "workflow": "Normal_95725",
+              "code": "Escalation_95725"
+            }
+          },
+          {
+            "ticket": {
+              "age_95725": 1560,
+              "attempts_95725": 8,
+              "urgent_95725": true
+            },
+            "expected_route": "Manual_95725",
+            "artifacts": {
+              "specification": "Manual_95725",
+              "workflow": "Manual_95725",
+              "code": "Manual_95725"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.007300625002244487,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_d",
+      "kind": "defective",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "correct": true,
+      "target_found": true,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "1 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "policy_19174_0",
+            "artifact": "workflow",
+            "version": 3,
+            "location": "/nodes/1",
+            "message": "Expected Manual_19174; observed Priority_19174 in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "new_policy/19174/paragraph/1",
+                "quote": "If topic_19174 is missing, send the ticket to \"Manual_19174\"."
+              },
+              {
+                "artifact": "workflow",
+                "version": 3,
+                "location": "/nodes/1",
+                "quote": "{\"false\": \"check_topic\", \"id\": \"check_priority\", \"kind\": \"decision\", \"rule_ref\": \"policy_19174_1\", \"snippet_id\": \"router\", \"true\": \"out_priority\", \"when\": {\"args\": [{\"field\": \"urgent_19174\", \"op\": \"eq\", \"value\": true}, {\"args\": [{\"field\": \"topic_19174\", \"op\": \"eq\", \"value\": \"security\"}, {\"field\": \"attempts_19174\", \"op\": \"gte\", \"value\": 7}], \"op\": \"or\"}], \"op\": \"and\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 3,
+                "location": "/nodes/4",
+                "quote": "{\"id\": \"out_priority\", \"kind\": \"route\", \"route\": \"Priority_19174\"}"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "attempts_19174": 7,
+                "urgent_19174": true
+              },
+              "expected_route": "Manual_19174",
+              "actual_route": "Priority_19174"
+            },
+            "trace": [
+              "/nodes/1",
+              "/nodes/4"
+            ],
+            "correction": "Implement 'If topic_19174 is missing, send the ticket to \"Manual_19174\".' in workflow; preserve earlier exceptions and route this ticket to Manual_19174."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_19174_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/19174/paragraph/1",
+                  "quote": "If topic_19174 is missing, send the ticket to \"Manual_19174\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_19174_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/19174/paragraph/2",
+                  "quote": "If urgent_19174 is yes and (topic_19174 is \"security\" or attempts_19174 is at least 7), send the ticket to \"Priority_19174\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_19174_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/19174/paragraph/3",
+                  "quote": "If age_19174 is at least 19 minutes and attempts_19174 is at least 3, send the ticket to \"Escalation_19174\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_19174_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/19174/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_19174\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "5869b57ec5910f86bf6458c98f586856e3f299959a343ada47426a4c2aeff008",
+          "request_sha256": "59a43525852266cd374330d366e9038697fa8e6d19f91f7dd69260e88b5772d4",
+          "request_bytes": 7754,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "59a43525852266cd374330d366e9038697fa8e6d19f91f7dd69260e88b5772d4",
+              "response_sha256": "90302e6e74e26402b01f00ab63b448b7c51922b38c6f78b2910a36524da47a28",
+              "response": "{\"coverage\": [\"policy_19174_0\", \"policy_19174_1\", \"policy_19174_2\", \"policy_19174_3\"], \"claims\": [{\"rule_ref\": \"policy_19174_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/19174/paragraph/1\", \"quote\": \"If topic_19174 is missing, send the ticket to \\\"Manual_19174\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_19174_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/19174/paragraph/2\", \"quote\": \"If urgent_19174 is yes and (topic_19174 is \\\"security\\\" or attempts_19174 is at least 7), send the ticket to \\\"Priority_19174\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_19174_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/19174/paragraph/3\", \"quote\": \"If age_19174 is at least 19 minutes and attempts_19174 is at least 3, send the ticket to \\\"Escalation_19174\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_19174_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/19174/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_19174\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 5.416700150817633e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_19174_0",
+            "policy_19174_1",
+            "policy_19174_2",
+            "policy_19174_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "c511db4ef627d7cb0198229a0c8d820e0aa30bf718c004f3d76432564e61d020"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_19174": 1140,
+              "attempts_19174": 3,
+              "urgent_19174": false,
+              "topic_19174": "billing"
+            },
+            "expected_route": "Escalation_19174",
+            "artifacts": {
+              "specification": "Escalation_19174",
+              "workflow": "Escalation_19174",
+              "code": "Escalation_19174"
+            }
+          },
+          {
+            "ticket": {
+              "age_19174": 1140,
+              "attempts_19174": 7,
+              "urgent_19174": true
+            },
+            "expected_route": "Manual_19174",
+            "artifacts": {
+              "specification": "Manual_19174",
+              "workflow": "Priority_19174",
+              "code": "Manual_19174"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.0070571670003118925,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_e",
+      "kind": "defective",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "correct": true,
+      "target_found": true,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "2 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "policy_71416_3",
+            "artifact": "code",
+            "version": 6,
+            "location": "router:4",
+            "message": "Expected Normal_71416; observed ERROR:KeyError in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "new_policy/71416/paragraph/4",
+                "quote": "For all remaining tickets, send the ticket to \"Normal_71416\"."
+              },
+              {
+                "artifact": "code",
+                "version": 6,
+                "location": "router:2",
+                "quote": "    if ticket.get(\"topic_71416\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 6,
+                "location": "router:4",
+                "quote": "    if ticket[\"urgent_71416\"] == True and (ticket.get(\"topic_71416\") == \"security\" or (ticket.get(\"attempts_71416\") is not None and ticket.get(\"attempts_71416\") >= 8)):"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "topic_71416": "billing"
+              },
+              "expected_route": "Normal_71416",
+              "actual_route": "ERROR:KeyError"
+            },
+            "trace": [
+              "router:2",
+              "router:4"
+            ],
+            "correction": "Implement 'For all remaining tickets, send the ticket to \"Normal_71416\".' in code; preserve earlier exceptions and route this ticket to Normal_71416."
+          },
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "policy_71416_2",
+            "artifact": "code",
+            "version": 6,
+            "location": "router:4",
+            "message": "Expected Escalation_71416; observed ERROR:KeyError in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "new_policy/71416/paragraph/3",
+                "quote": "If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \"Escalation_71416\"."
+              },
+              {
+                "artifact": "code",
+                "version": 6,
+                "location": "router:2",
+                "quote": "    if ticket.get(\"topic_71416\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 6,
+                "location": "router:4",
+                "quote": "    if ticket[\"urgent_71416\"] == True and (ticket.get(\"topic_71416\") == \"security\" or (ticket.get(\"attempts_71416\") is not None and ticket.get(\"attempts_71416\") >= 8)):"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "age_71416": 1380,
+                "attempts_71416": 3,
+                "topic_71416": "billing"
+              },
+              "expected_route": "Escalation_71416",
+              "actual_route": "ERROR:KeyError"
+            },
+            "trace": [
+              "router:2",
+              "router:4"
+            ],
+            "correction": "Implement 'If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \"Escalation_71416\".' in code; preserve earlier exceptions and route this ticket to Escalation_71416."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_71416_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/71416/paragraph/1",
+                  "quote": "If topic_71416 is missing, send the ticket to \"Manual_71416\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_71416_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/71416/paragraph/2",
+                  "quote": "If urgent_71416 is yes and (topic_71416 is \"security\" or attempts_71416 is at least 8), send the ticket to \"Priority_71416\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_71416_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/71416/paragraph/3",
+                  "quote": "If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \"Escalation_71416\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_71416_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/71416/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_71416\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "6658b1d6f50b790a3d46629e8cda6736ce9fa5c434f8e1fce142f8ace0e31b67",
+          "request_sha256": "029e47d447ab2d1018c6e66b7e18df9bc9f26f8a3710c367d3c6672f8ab63950",
+          "request_bytes": 7754,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "029e47d447ab2d1018c6e66b7e18df9bc9f26f8a3710c367d3c6672f8ab63950",
+              "response_sha256": "db8e9f28208b45a4580a62bf6d5ca9222150700cdf767fbd22776dba153bea4f",
+              "response": "{\"coverage\": [\"policy_71416_0\", \"policy_71416_1\", \"policy_71416_2\", \"policy_71416_3\"], \"claims\": [{\"rule_ref\": \"policy_71416_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/71416/paragraph/1\", \"quote\": \"If topic_71416 is missing, send the ticket to \\\"Manual_71416\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_71416_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/71416/paragraph/2\", \"quote\": \"If urgent_71416 is yes and (topic_71416 is \\\"security\\\" or attempts_71416 is at least 8), send the ticket to \\\"Priority_71416\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_71416_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/71416/paragraph/3\", \"quote\": \"If age_71416 is at least 23 minutes and attempts_71416 is at least 3, send the ticket to \\\"Escalation_71416\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_71416_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/71416/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_71416\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 4.920799983665347e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_71416_0",
+            "policy_71416_1",
+            "policy_71416_2",
+            "policy_71416_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "0695fa7a162803cbff4d12e3406957fcb5c644c0c798b7921e272a469281e451"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_71416": 1380,
+              "attempts_71416": 3,
+              "urgent_71416": false,
+              "topic_71416": "billing"
+            },
+            "expected_route": "Escalation_71416",
+            "artifacts": {
+              "specification": "Escalation_71416",
+              "workflow": "Escalation_71416",
+              "code": "Escalation_71416"
+            }
+          },
+          {
+            "ticket": {
+              "age_71416": 1380,
+              "attempts_71416": 8,
+              "urgent_71416": true
+            },
+            "expected_route": "Manual_71416",
+            "artifacts": {
+              "specification": "Manual_71416",
+              "workflow": "Manual_71416",
+              "code": "Manual_71416"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.0067628750039148144,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_f",
+      "kind": "defective",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "correct": true,
+      "target_found": true,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "1 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "policy_54579_2",
+            "artifact": "workflow",
+            "version": 4,
+            "location": "/nodes/2",
+            "message": "Expected Escalation_54579; observed Normal_54579 in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "new_policy/54579/paragraph/3",
+                "quote": "If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \"Escalation_54579\"."
+              },
+              {
+                "artifact": "workflow",
+                "version": 4,
+                "location": "/nodes/0",
+                "quote": "{\"false\": \"check_priority\", \"id\": \"check_topic\", \"kind\": \"decision\", \"rule_ref\": \"policy_54579_0\", \"snippet_id\": \"router\", \"true\": \"out_manual\", \"when\": {\"field\": \"topic_54579\", \"op\": \"missing\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 4,
+                "location": "/nodes/1",
+                "quote": "{\"false\": \"check_age\", \"id\": \"check_priority\", \"kind\": \"decision\", \"rule_ref\": \"policy_54579_1\", \"true\": \"out_priority\", \"when\": {\"args\": [{\"field\": \"urgent_54579\", \"op\": \"eq\", \"value\": true}, {\"args\": [{\"field\": \"topic_54579\", \"op\": \"eq\", \"value\": \"security\"}, {\"field\": \"attempts_54579\", \"op\": \"gte\", \"value\": 7}], \"op\": \"or\"}], \"op\": \"and\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 4,
+                "location": "/nodes/2",
+                "quote": "{\"false\": \"out_normal\", \"id\": \"check_age\", \"kind\": \"decision\", \"rule_ref\": \"policy_54579_2\", \"true\": \"out_normal\", \"when\": {\"args\": [{\"field\": \"age_54579\", \"op\": \"gte\", \"unit\": \"seconds\", \"value\": 1440}, {\"field\": \"attempts_54579\", \"op\": \"gte\", \"value\": 2}], \"op\": \"and\"}}"
+              },
+              {
+                "artifact": "workflow",
+                "version": 4,
+                "location": "/nodes/6",
+                "quote": "{\"id\": \"out_normal\", \"kind\": \"route\", \"route\": \"Normal_54579\"}"
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "age_54579": 1440,
+                "attempts_54579": 2,
+                "topic_54579": "billing"
+              },
+              "expected_route": "Escalation_54579",
+              "actual_route": "Normal_54579"
+            },
+            "trace": [
+              "/nodes/0",
+              "/nodes/1",
+              "/nodes/2",
+              "/nodes/6"
+            ],
+            "correction": "Implement 'If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \"Escalation_54579\".' in workflow; preserve earlier exceptions and route this ticket to Escalation_54579."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_54579_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/54579/paragraph/1",
+                  "quote": "If topic_54579 is missing, send the ticket to \"Manual_54579\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_54579_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/54579/paragraph/2",
+                  "quote": "If urgent_54579 is yes and (topic_54579 is \"security\" or attempts_54579 is at least 7), send the ticket to \"Priority_54579\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_54579_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/54579/paragraph/3",
+                  "quote": "If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \"Escalation_54579\"."
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "policy_54579_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/54579/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_54579\"."
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 1080,
+          "reachable_nodes": [
+            "check_age",
+            "check_priority",
+            "check_topic",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": [
+            "out_escalation"
+          ]
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 1080
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "d443e224626403e88c1a85441a151529d04670efd78124209a0680902460f91c",
+          "request_sha256": "4e1feae1f693c46a08b342e8e1ef2c46ab2a87119c7b4e3bcf817c011d435f67",
+          "request_bytes": 7754,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "4e1feae1f693c46a08b342e8e1ef2c46ab2a87119c7b4e3bcf817c011d435f67",
+              "response_sha256": "f6f21ad24aac498b95e85bced29577f372ef941646f6344ceed7ef6857935dee",
+              "response": "{\"coverage\": [\"policy_54579_0\", \"policy_54579_1\", \"policy_54579_2\", \"policy_54579_3\"], \"claims\": [{\"rule_ref\": \"policy_54579_0\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/54579/paragraph/1\", \"quote\": \"If topic_54579 is missing, send the ticket to \\\"Manual_54579\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_54579_1\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/54579/paragraph/2\", \"quote\": \"If urgent_54579 is yes and (topic_54579 is \\\"security\\\" or attempts_54579 is at least 7), send the ticket to \\\"Priority_54579\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_54579_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/54579/paragraph/3\", \"quote\": \"If age_54579 is at least 24 minutes and attempts_54579 is at least 2, send the ticket to \\\"Escalation_54579\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"policy_54579_3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/54579/paragraph/4\", \"quote\": \"For all remaining tickets, send the ticket to \\\"Normal_54579\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 5.379200592869893e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_54579_0",
+            "policy_54579_1",
+            "policy_54579_2",
+            "policy_54579_3"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "dea2bc11203b811dc809720ef3a3c3fda4d62013312241b65dd1de007f5ea4d5"
+        },
+        "ticket_results": [
+          {
+            "ticket": {
+              "age_54579": 1440,
+              "attempts_54579": 2,
+              "urgent_54579": false,
+              "topic_54579": "billing"
+            },
+            "expected_route": "Escalation_54579",
+            "artifacts": {
+              "specification": "Escalation_54579",
+              "workflow": "Normal_54579",
+              "code": "Escalation_54579"
+            }
+          },
+          {
+            "ticket": {
+              "age_54579": 1440,
+              "attempts_54579": 7,
+              "urgent_54579": true
+            },
+            "expected_route": "Manual_54579",
+            "artifacts": {
+              "specification": "Manual_54579",
+              "workflow": "Manual_54579",
+              "code": "Manual_54579"
+            }
+          }
+        ],
+        "resources": {
+          "seconds": 0.007133833001716994,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_g",
+      "kind": "incomplete",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "correct": true,
+      "target_found": null,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 2 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "policy_89567_0",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/89567/paragraph/1",
+                  "quote": "If topic_89567 is missing, send the ticket to \"Manual_89567\"."
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "policy_89567_1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/89567/paragraph/2",
+                  "quote": "If urgent_89567 is yes and (topic_89567 is \"security\" or attempts_89567 is at least 8), send the ticket to \"Priority_89567\"."
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "policy_89567_2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/89567/paragraph/3",
+                  "quote": "If age_89567 is too long and attempts_89567 is at least 2, send the ticket to \"Escalation_89567\"."
+                }
+              ],
+              "status": "unreviewed"
+            },
+            {
+              "rule_ref": "policy_89567_3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "new_policy/89567/paragraph/4",
+                  "quote": "For all remaining tickets, send the ticket to \"Normal_89567\"."
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "source_language",
+              "reason": "Give a numeric cutoff for age 89567; wording such as 'too long' is not defined",
+              "rule_ref": "policy_89567_2"
+            },
+            {
+              "scope": "exhaustive_semantics",
+              "reason": "Effective source policy is unresolved",
+              "rule_ref": null
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 0
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "source_language",
+            "status": "INCOMPLETE",
+            "detail": "Give a numeric cutoff for age 89567; wording such as 'too long' is not defined"
+          },
+          {
+            "check": "code_syntax:router",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "exhaustive_semantics",
+            "status": "INCOMPLETE",
+            "detail": "Effective source policy is unresolved"
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "synthetic-fake; not evidence of real-model performance",
+          "configuration": {
+            "model": "offline-fake",
+            "temperature": 0,
+            "timeout_seconds": 5,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": null
+          },
+          "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+          "response_schema_sha256": "a3dd02d871d48473320898aeaef7f75d5be05743e65b05397d887693a0e5e2bc",
+          "request_sha256": "ad20894b6a35ef7da4080711e92d76ba978267f2639a76af712ea308b0715375",
+          "request_bytes": 5221,
+          "attempts": [
+            {
+              "attempt": 1,
+              "request_sha256": "ad20894b6a35ef7da4080711e92d76ba978267f2639a76af712ea308b0715375",
+              "response_sha256": "0f227beb8c7fd7902051f6ee4ba38662df37620833ee0ef4a846cf37be92048a",
+              "response": "{\"coverage\": [\"policy_89567_2\"], \"claims\": [{\"rule_ref\": \"policy_89567_2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"new_policy/89567/paragraph/3\", \"quote\": \"If age_89567 is too long and attempts_89567 is at least 2, send the ticket to \\\"Escalation_89567\\\".\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+              "result": "validated",
+              "seconds": 2.4333996407222003e-05
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "policy_89567_2"
+          ],
+          "scope": "unresolved_source_language"
+        },
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "c5a18b10df111ce8f4e6e3d487226de3db3993ce589f5f782e24f53d584a245c"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 0.0007567909997305833,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "new_reserved_h",
+      "kind": "incomplete",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "correct": true,
+      "target_found": null,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [],
+          "unreviewed": [
+            {
+              "scope": "contracts_and_approvals",
+              "reason": "Unsupported: Conflicting approval decisions for ('policy_89854_2', 2): approval_89854 and rejected_89854",
+              "rule_ref": null
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 0
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "INCOMPLETE",
+            "detail": "Unsupported: Conflicting approval decisions for ('policy_89854_2', 2): approval_89854 and rejected_89854"
+          }
+        ],
+        "model": {},
+        "provenance": {
+          "reviewer_version": "0.6.0",
+          "cache": "disabled",
+          "bundle_sha256": "324a20cc821112611944ae2498d1435f941cfd418b7643197e0960c368469869"
+        },
+        "resources": {
+          "seconds": 0.0003978750028181821,
+          "model_calls": 0,
+          "model_retries": 0
+        }
+      }
+    }
+  ]
+}

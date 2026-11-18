@@ -1,0 +1,199 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "3 problems found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to escalation, but the specification returns normal.",
+      "severity": "blocker",
+      "rule_ref": "R3",
+      "artifact": "specification",
+      "version": 1,
+      "location": "Specification rule 'S3'",
+      "reference": "/rules/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 30 minutes, escalate the ticket."
+        },
+        {
+          "artifact": "approvals",
+          "version": 2,
+          "location": "/approvals/0",
+          "quote": "{\"base_version\": 1, \"from_revision\": 1, \"id\": \"A1\", \"rule_ref\": \"R3\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"If waiting time is at least 25 minutes, escalate the ticket.\", \"to_revision\": 10, \"version\": 2}"
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 25 minutes, escalate the ticket.' in specification; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 25
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      }
+    },
+    {
+      "problem": "This ticket should go to escalation, but the workflow returns normal.",
+      "severity": "blocker",
+      "rule_ref": "R3",
+      "artifact": "workflow",
+      "version": 1,
+      "location": "Workflow step 'n3': condition",
+      "reference": "/nodes/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 30 minutes, escalate the ticket."
+        },
+        {
+          "artifact": "approvals",
+          "version": 2,
+          "location": "/approvals/0",
+          "quote": "{\"base_version\": 1, \"from_revision\": 1, \"id\": \"A1\", \"rule_ref\": \"R3\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"If waiting time is at least 25 minutes, escalate the ticket.\", \"to_revision\": 10, \"version\": 2}"
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 25 minutes, escalate the ticket.' in workflow; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 25
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      }
+    },
+    {
+      "problem": "This ticket should go to escalation, but the Python code returns normal.",
+      "severity": "blocker",
+      "rule_ref": "R3",
+      "artifact": "code",
+      "version": 1,
+      "location": "Python snippet 'main', line 6",
+      "reference": "main:6",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 30 minutes, escalate the ticket."
+        },
+        {
+          "artifact": "approvals",
+          "version": 2,
+          "location": "/approvals/0",
+          "quote": "{\"base_version\": 1, \"from_revision\": 1, \"id\": \"A1\", \"rule_ref\": \"R3\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"If waiting time is at least 25 minutes, escalate the ticket.\", \"to_revision\": 10, \"version\": 2}"
+        },
+        {
+          "artifact": "code",
+          "version": 1,
+          "location": "main:6",
+          "quote": "    if ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 30:"
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 25 minutes, escalate the ticket.' in code; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 25
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "R1": "reviewed",
+      "R2": "reviewed",
+      "R3": "reviewed",
+      "R4": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "code semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 4.98125329100003,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+      "request_sha256": "4e00d6d8d037acf83f11da1521666b6af1fb79bf1489be4984dc37c408c16d5e",
+      "request_bytes": 7164,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "4e00d6d8d037acf83f11da1521666b6af1fb79bf1489be4984dc37c408c16d5e",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:46:45.091262Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1705,
+            "eval_count": 22
+          },
+          "response_sha256": "31c58fe9459888e463d62cd52c0c36de684053a9d6b66ce13e0da24afbb62c5d",
+          "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\": []}",
+          "result": "validated",
+          "seconds": 4.977151582999795
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "01627a05bc2d4b8057cbddd3d4874271d258a42848a67161a31ccbbba17c9358"
+    }
+  }
+}

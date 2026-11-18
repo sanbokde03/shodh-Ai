@@ -1,0 +1,109 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "The review could not be completed. See coverage.unreviewed.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {
+      "R1": "partially_reviewed",
+      "R2": "partially_reviewed",
+      "R3": "unreviewed",
+      "R4": "partially_reviewed"
+    },
+    "unreviewed": [
+      {
+        "scope": "source_language",
+        "reason": "Name a declared ticket detail, such as waiting time, category or urgent",
+        "rule_ref": "R3"
+      },
+      {
+        "scope": "exhaustive_semantics",
+        "reason": "Effective source policy is unresolved",
+        "rule_ref": null
+      },
+      {
+        "scope": "model_ambiguity",
+        "reason": "The term 'too long' is a qualitative comparison lacking a specific numeric criterion (e.g., threshold in minutes) defined in the source text or approved change. The field_contract defines 'waiting' as a number in minutes but does not provide the cutoff value required to resolve this condition, resulting in an interpretation of null.",
+        "rule_ref": "R3"
+      }
+    ]
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "source language",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "exhaustive semantics",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "model ambiguity",
+      "status": "INCOMPLETE"
+    },
+    {
+      "check": "model review",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "resources": {
+    "seconds": 9.632468707999578,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "0cfebd74d114ed084324caa52e580f5a96b7c208345fa1e1983fa2ca5e53fcc7",
+      "request_sha256": "9fd535f51cb5139caf45b2d4520d84f0ee9cbee912985a1007387c665bd509ac",
+      "request_bytes": 4922,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "9fd535f51cb5139caf45b2d4520d84f0ee9cbee912985a1007387c665bd509ac",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:46:54.728138Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1026,
+            "eval_count": 133
+          },
+          "response_sha256": "368879b2c0574937ef45dcb5469850bd695f05b987cb7484f46cd881693bedfd",
+          "response": "{\"coverage\": [\"R3\"], \"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"Escalate tickets that have waited too long.\", \"explanation\": \"The term 'too long' is a qualitative comparison lacking a specific numeric criterion (e.g., threshold in minutes) defined in the source text or approved change. The field_contract defines 'waiting' as a number in minutes but does not provide the cutoff value required to resolve this condition, resulting in an interpretation of null.\"}]}",
+          "result": "validated",
+          "seconds": 9.630601124999885
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "R3"
+      ],
+      "scope": "unresolved_source_language"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "18d7aa9b406a2c9ba6cade1bbd4027877bf66a6829c4f8d02245fa392e2f71f1"
+    }
+  }
+}

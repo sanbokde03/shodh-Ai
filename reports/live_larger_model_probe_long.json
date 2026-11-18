@@ -1,0 +1,157 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "0 evidenced blocker(s); 3 unreviewed scope item(s).",
+  "findings": [],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "R1",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/1",
+            "quote": "IF category IS MISSING THEN manual"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R2",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/2",
+            "quote": "IF urgent = true THEN priority"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R3",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/3",
+            "quote": "Escalate tickets that have waited too long."
+          }
+        ],
+        "status": "unreviewed"
+      },
+      {
+        "rule_ref": "R4",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/4",
+            "quote": "OTHERWISE THEN normal"
+          }
+        ],
+        "status": "partially_reviewed"
+      }
+    ],
+    "unreviewed": [
+      {
+        "scope": "source_language",
+        "reason": "Unsupported source text at '.'",
+        "rule_ref": "R3"
+      },
+      {
+        "scope": "exhaustive_semantics",
+        "reason": "Effective source policy is unresolved",
+        "rule_ref": null
+      },
+      {
+        "scope": "model_review",
+        "reason": "Unsupported: Model coverage does not exactly match effective requirements",
+        "rule_ref": null
+      }
+    ],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 0
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "source_language",
+      "status": "INCOMPLETE",
+      "detail": "Unsupported source text at '.'"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "exhaustive_semantics",
+      "status": "INCOMPLETE",
+      "detail": "Effective source policy is unresolved"
+    },
+    {
+      "check": "model_review",
+      "status": "INCOMPLETE",
+      "detail": "Unsupported: Model coverage does not exactly match effective requirements"
+    },
+    {
+      "check": "model_review",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "model": {
+    "client": "live-local-ollama",
+    "configuration": {
+      "model": "qwen3.5:9b",
+      "temperature": 0,
+      "timeout_seconds": 90,
+      "max_attempts": 1,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": false
+    },
+    "prompt_sha256": "a890e0f8d5cb552ea1258750b2169e9cb4c4c547e59b5924633ac50e7a9aa8f6",
+    "response_schema_sha256": "79f0d01b658e1f577ac82e47f1c93bdd5b87dce49b171f0826eba0816819f8b8",
+    "request_sha256": "797b2059b576b221a651bf33bf8b50c26e5611bce59286fc09164cd42115e4a7",
+    "request_bytes": 11728,
+    "attempts": [
+      {
+        "attempt": 1,
+        "transport": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-17T17:38:27.506326Z",
+          "done_reason": "stop",
+          "prompt_eval_count": 3307,
+          "eval_count": 154
+        },
+        "response_sha256": "9a8a61f39491ae847610a2e99983849ad5785fa0ad0f85b021987dbe70947ec6",
+        "response": "{\"coverage\": [\"R3\"], \"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"Escalate tickets that have waited too long.\", \"explanation\": \"The source text 'Escalate tickets that have waited too long.' contains the undefined qualitative term 'too long'. The field_contract defines 'waiting' as a number in minutes but provides no specific threshold or criterion for what constitutes 'too long'. While specification and code artifacts define a value of 30, the source rule itself lacks this explicit boundary, creating residual ambiguity regarding the condition's meaning within the declared language contract.\"}]}",
+        "result": "rejected",
+        "error": "Unsupported: Model coverage does not exactly match effective requirements",
+        "seconds": 24.50300595801673
+      }
+    ],
+    "calls": 1,
+    "retries": 0
+  },
+  "provenance": {
+    "reviewer_version": "0.2.0",
+    "cache": "disabled",
+    "bundle_sha256": "d20969cc9d7c0469da622ae9fbc6cc69d77ebd0a28dc7099bb6b58deed1c63a6"
+  },
+  "ticket_results": [],
+  "resources": {
+    "seconds": 24.515258708997862,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

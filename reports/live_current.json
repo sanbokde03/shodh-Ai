@@ -1,0 +1,939 @@
+{
+  "scope": "Five inspected development cases; not held-out model accuracy or a production benchmark.",
+  "configuration": {
+    "model": "qwen3.5:9b",
+    "temperature": 0,
+    "timeout_seconds": 90,
+    "max_attempts": 2,
+    "max_output_tokens": 2048,
+    "max_request_bytes": 200000,
+    "context_window": 32768,
+    "thinking": false
+  },
+  "metrics": {
+    "total": 5,
+    "correct": 5,
+    "valid_total": 3,
+    "valid_incomplete": 0,
+    "false_passes": 0,
+    "false_blocks": 0,
+    "model_calls": 5,
+    "model_retries": 0,
+    "validated_model_reports": 5,
+    "ambiguity_judgments_correct": 5,
+    "runtime_seconds": 95.48813237497234,
+    "defective_total": 1,
+    "defective_incomplete": 0,
+    "incomplete_total": 1,
+    "incomplete_incomplete": 1
+  },
+  "cases": [
+    {
+      "id": "valid_base",
+      "expected": "PASS",
+      "actual": "PASS",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "PASS",
+        "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "d3f89be3b54c19f014bbabbe7428f6cec6dba502d9b4adcad91b158b10e554e2",
+          "request_bytes": 6049,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:13:01.875827Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 1431,
+                "eval_count": 21
+              },
+              "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+              "result": "validated",
+              "seconds": 41.46155587499379
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "55b1a9e11fa9907d435b0dfaf730b2f703bc5d60a54efa866757b6db8171cfac"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 41.46775029200944,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "valid_approved",
+      "expected": "PASS",
+      "actual": "PASS",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "PASS",
+        "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 2,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                },
+                {
+                  "artifact": "approvals",
+                  "version": 2,
+                  "location": "/approvals/0",
+                  "quote": "{\"base_version\": 1, \"from_revision\": 1, \"id\": \"A1\", \"rule_ref\": \"R3\", \"sequence\": 1, \"status\": \"approved\", \"text\": \"IF waiting >= 25 minutes THEN escalation\", \"to_revision\": 10, \"version\": 2}"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "670a0a60fa6699b9a1929accbde5f2eba9f21ca5af647531249aabbf6c266423",
+          "request_bytes": 6394,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:13:10.562898Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 1549,
+                "eval_count": 21
+              },
+              "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+              "result": "validated",
+              "seconds": 8.612620334024541
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "4c1ed0e61b51ae122a9411c0d82a660a797162d5e1dfe23e9b0f6dced45dfd1c"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 8.636555000004591,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "valid_unusual_units",
+      "expected": "PASS",
+      "actual": "PASS",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "PASS",
+        "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "WHEN NOT (waiting < 30 minutes OR waiting IS MISSING) THEN escalation"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 96,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "code_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 96
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "e71202eac937aed6b136e31985b7b52d00dca0d8b6ad850ddeac3c9f40341c35",
+          "request_bytes": 6220,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:13:19.362894Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 1487,
+                "eval_count": 21
+              },
+              "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+              "result": "validated",
+              "seconds": 9.051366375002544
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "b68c5db99673e8d75afa38367ba1f053dd47700512c565bdbee1072e87b164c7"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 9.07363187498413,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "defect_code",
+      "expected": "CHANGES_REQUIRED",
+      "actual": "CHANGES_REQUIRED",
+      "expected_ambiguous_rules": [],
+      "actual_ambiguous_rules": [],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "CHANGES_REQUIRED",
+        "summary": "1 evidenced blocker(s); 0 unreviewed scope item(s).",
+        "findings": [
+          {
+            "severity": "blocker",
+            "kind": "behavior_mismatch",
+            "rule_ref": "R3",
+            "artifact": "code",
+            "version": 1,
+            "location": "main:6",
+            "message": "Expected escalation; observed normal in supported semantics.",
+            "evidence": [
+              {
+                "artifact": "source",
+                "version": 1,
+                "location": "policy/paragraph/3",
+                "quote": "IF waiting >= 30 minutes THEN escalation"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:2",
+                "quote": "    if ticket.get(\"category\") is None:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:4",
+                "quote": "    if ticket.get(\"urgent\") == True:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:6",
+                "quote": "    if ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 60:"
+              },
+              {
+                "artifact": "code",
+                "version": 1,
+                "location": "main:8",
+                "quote": "    return \"normal\""
+              }
+            ],
+            "counterexample": {
+              "ticket": {
+                "category": "billing",
+                "waiting": 30
+              },
+              "expected_route": "escalation",
+              "actual_route": "normal"
+            },
+            "trace": [
+              "main:2",
+              "main:4",
+              "main:6",
+              "main:8"
+            ],
+            "correction": "Implement 'IF waiting >= 30 minutes THEN escalation' in code; preserve earlier exceptions and route this ticket to escalation."
+          }
+        ],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "IF waiting >= 30 minutes THEN escalation"
+                }
+              ],
+              "status": "reviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "reviewed"
+            }
+          ],
+          "unreviewed": [],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 144,
+          "reachable_nodes": [
+            "n1",
+            "n2",
+            "n3",
+            "out_escalation",
+            "out_manual",
+            "out_normal",
+            "out_priority"
+          ],
+          "unreachable_nodes": []
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "specification_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "workflow_semantics",
+            "status": "PASS",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "code_semantics",
+            "status": "CHANGES_REQUIRED",
+            "method": "exhaustive predicate partition",
+            "representatives": 144
+          },
+          {
+            "check": "model_review",
+            "status": "PASS"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+          "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+          "request_sha256": "d3f89be3b54c19f014bbabbe7428f6cec6dba502d9b4adcad91b158b10e554e2",
+          "request_bytes": 6049,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:13:28.465463Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 1431,
+                "eval_count": 21
+              },
+              "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+              "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+              "result": "validated",
+              "seconds": 8.768656665983144
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "scope": "residual_ambiguity_of_formal_policy"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "e0a299085bde532194ab91340f8dfe4436f8778822d08baaa0ed02ddd6e3a1af"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 8.79569404097856,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    },
+    {
+      "id": "incomplete_ambiguous",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "expected_ambiguous_rules": [
+        "R3"
+      ],
+      "actual_ambiguous_rules": [
+        "R3"
+      ],
+      "ambiguity_judgment_correct": true,
+      "report": {
+        "status": "INCOMPLETE",
+        "summary": "0 evidenced blocker(s); 3 unreviewed scope item(s).",
+        "findings": [],
+        "coverage": {
+          "rules": [
+            {
+              "rule_ref": "R1",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/1",
+                  "quote": "IF category IS MISSING THEN manual"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R2",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/2",
+                  "quote": "IF urgent = true THEN priority"
+                }
+              ],
+              "status": "partially_reviewed"
+            },
+            {
+              "rule_ref": "R3",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/3",
+                  "quote": "Escalate tickets that have waited too long."
+                }
+              ],
+              "status": "unreviewed"
+            },
+            {
+              "rule_ref": "R4",
+              "version": 1,
+              "source": [
+                {
+                  "artifact": "source",
+                  "version": 1,
+                  "location": "policy/paragraph/4",
+                  "quote": "OTHERWISE THEN normal"
+                }
+              ],
+              "status": "partially_reviewed"
+            }
+          ],
+          "unreviewed": [
+            {
+              "scope": "source_language",
+              "reason": "Unsupported source text at '.'",
+              "rule_ref": "R3"
+            },
+            {
+              "scope": "exhaustive_semantics",
+              "reason": "Effective source policy is unresolved",
+              "rule_ref": null
+            },
+            {
+              "scope": "model_ambiguity",
+              "reason": "The rule uses the qualitative term 'too long' without defining a specific numeric threshold or unit. The field_contract defines 'waiting' as a number in minutes but does not provide a criterion for what constitutes 'too long'. Per instructions, qualitative comparisons need a criterion in the source; this is missing.",
+              "rule_ref": "R3"
+            }
+          ],
+          "method": "exhaustive integer predicate partition",
+          "representative_tickets": 0
+        },
+        "check_results": [
+          {
+            "check": "contracts_and_approvals",
+            "status": "PASS"
+          },
+          {
+            "check": "source_language",
+            "status": "INCOMPLETE",
+            "detail": "Unsupported source text at '.'"
+          },
+          {
+            "check": "code_syntax:main",
+            "status": "PASS",
+            "execution": "not executed; restricted AST interpreter"
+          },
+          {
+            "check": "exhaustive_semantics",
+            "status": "INCOMPLETE",
+            "detail": "Effective source policy is unresolved"
+          },
+          {
+            "check": "model_ambiguity",
+            "status": "INCOMPLETE",
+            "detail": "The rule uses the qualitative term 'too long' without defining a specific numeric threshold or unit. The field_contract defines 'waiting' as a number in minutes but does not provide a criterion for what constitutes 'too long'. Per instructions, qualitative comparisons need a criterion in the source; this is missing."
+          },
+          {
+            "check": "model_review",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "model": {
+          "client": "live-local-ollama",
+          "configuration": {
+            "model": "qwen3.5:9b",
+            "temperature": 0,
+            "timeout_seconds": 90,
+            "max_attempts": 2,
+            "max_output_tokens": 2048,
+            "max_request_bytes": 200000,
+            "context_window": 32768,
+            "thinking": false
+          },
+          "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+          "response_schema_sha256": "0cfebd74d114ed084324caa52e580f5a96b7c208345fa1e1983fa2ca5e53fcc7",
+          "request_sha256": "afff58941d9adb9d6f7f8e5e9b8285003ef2a40c14d90d5ff80b93e242caeeed",
+          "request_bytes": 4509,
+          "attempts": [
+            {
+              "attempt": 1,
+              "transport": {
+                "model": "qwen3.5:9b",
+                "created_at": "2026-11-17T18:13:56.176843Z",
+                "done_reason": "stop",
+                "prompt_eval_count": 949,
+                "eval_count": 129
+              },
+              "response_sha256": "87ec3ecd51db23f04c8eb47dbda4bd37d74b83febb378f94526691560eb15e35",
+              "response": "{\"coverage\": [\"R3\"], \"claims\": [{\"rule_ref\": \"R3\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"Escalate tickets that have waited too long.\", \"explanation\": \"The rule uses the qualitative term 'too long' without defining a specific numeric threshold or unit. The field_contract defines 'waiting' as a number in minutes but does not provide a criterion for what constitutes 'too long'. Per instructions, qualitative comparisons need a criterion in the source; this is missing.\"}]}",
+              "result": "validated",
+              "seconds": 27.46197841700632
+            }
+          ],
+          "calls": 1,
+          "retries": 0,
+          "requested_rules": [
+            "R3"
+          ],
+          "scope": "unresolved_source_language"
+        },
+        "provenance": {
+          "reviewer_version": "0.2.0",
+          "cache": "disabled",
+          "bundle_sha256": "d20969cc9d7c0469da622ae9fbc6cc69d77ebd0a28dc7099bb6b58deed1c63a6"
+        },
+        "ticket_results": [],
+        "resources": {
+          "seconds": 27.514501166995615,
+          "model_calls": 1,
+          "model_retries": 0
+        }
+      }
+    }
+  ]
+}

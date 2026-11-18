@@ -1,0 +1,35 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "The review could not be completed. See coverage.unreviewed.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {},
+    "unreviewed": [
+      {
+        "scope": "contracts_and_approvals",
+        "reason": "Unsupported: Conflicting approval decisions for ('policy_27673_2', 2): decision_a and decision_b",
+        "rule_ref": null
+      }
+    ]
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "resources": {
+    "seconds": 0.0005708750013582176,
+    "model_calls": 0,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {},
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "f885ab50343e77d999855072de36750469e3f956adb113fdc8691a97e7425d52"
+    }
+  }
+}

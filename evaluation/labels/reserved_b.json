@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "holdout",
+  "reason": "Missing category plus wait>=30 must be manual; workflow escalates before checking category. Also urgent technical waiting tickets lose priority.",
+  "source_evidence": [
+    "policy/paragraph/1",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/4"
+  ],
+  "model_mode": "ok",
+  "target": {
+    "artifact": "workflow",
+    "location": "/nodes/2",
+    "rule_ref": "R1"
+  }
+}

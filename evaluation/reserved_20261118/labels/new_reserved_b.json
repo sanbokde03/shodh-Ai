@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "reason": "Applicable approved change lowers the cutoff; specification, workflow and code use the new value.",
+  "target": null,
+  "oracle": {
+    "age": "age_49227",
+    "tries": "attempts_49227",
+    "urgent": "urgent_49227",
+    "topic": "topic_49227",
+    "threshold_seconds": 960,
+    "minimum": 2,
+    "priority_minimum": 7,
+    "routes": [
+      "Manual_49227",
+      "Priority_49227",
+      "Escalation_49227",
+      "Normal_49227"
+    ]
+  }
+}

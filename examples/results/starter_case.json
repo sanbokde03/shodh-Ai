@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "summary": "0 evidenced blocker(s); 0 unreviewed scope item(s).",
+  "findings": [],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "wait_rule",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/1",
+            "quote": "Escalate tickets waiting 30 minutes or more."
+          }
+        ],
+        "status": "reviewed"
+      },
+      {
+        "rule_ref": "fallback",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/2",
+            "quote": "Send all remaining tickets to the normal queue."
+          }
+        ],
+        "status": "reviewed"
+      }
+    ],
+    "unreviewed": [],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 6,
+    "reachable_nodes": [
+      "check_wait",
+      "escalate",
+      "normal"
+    ],
+    "unreachable_nodes": []
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "specification_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "workflow_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "code_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "model_review",
+      "status": "PASS"
+    }
+  ],
+  "model": {
+    "client": "synthetic-fake; not evidence of real-model performance",
+    "configuration": {
+      "model": "offline-fake",
+      "temperature": 0,
+      "timeout_seconds": 5,
+      "max_attempts": 2,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": null
+    },
+    "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+    "response_schema_sha256": "c68ae4f5717d4c2e1c67b1a8adf903c346e39e35090095bd099e2c5714e80e57",
+    "request_sha256": "a65c035af4288a1ec6f962f0da2438be963592bd1436e38ddcdbfa639eecf780",
+    "request_bytes": 5463,
+    "attempts": [
+      {
+        "attempt": 1,
+        "request_sha256": "a65c035af4288a1ec6f962f0da2438be963592bd1436e38ddcdbfa639eecf780",
+        "response_sha256": "52ef482e3c6457bacfe1ad4d22a1cc325a8c33e4e73dc48370acc87d973fe5f0",
+        "response": "{\"coverage\": [\"wait_rule\", \"fallback\"], \"claims\": [{\"rule_ref\": \"wait_rule\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/1\", \"quote\": \"Escalate tickets waiting 30 minutes or more.\", \"explanation\": \"Synthetic response for contract tests only.\"}, {\"rule_ref\": \"fallback\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"Send all remaining tickets to the normal queue.\", \"explanation\": \"Synthetic response for contract tests only.\"}]}",
+        "result": "validated",
+        "seconds": 3.408299926377367e-05
+      }
+    ],
+    "calls": 1,
+    "retries": 0,
+    "requested_rules": [
+      "wait_rule",
+      "fallback"
+    ],
+    "scope": "residual_ambiguity_of_formal_policy"
+  },
+  "provenance": {
+    "reviewer_version": "0.6.0",
+    "cache": "disabled",
+    "bundle_sha256": "e7d5aec8ce4c9283a8c95c3fbd602299585126e290b9075d53e865d86c78a946"
+  },
+  "ticket_results": [
+    {
+      "ticket": {
+        "waiting": 30
+      },
+      "expected_route": "escalation",
+      "artifacts": {
+        "specification": "escalation",
+        "workflow": "escalation",
+        "code": "escalation"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 0.0007817090008757077,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

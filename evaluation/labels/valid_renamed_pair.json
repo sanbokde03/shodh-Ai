@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "split": "development",
+  "reason": "Only rule IDs, supported paraphrase and physical record order change; explicit semantic order is preserved.",
+  "source_evidence": [
+    "policy/paragraph/4",
+    "policy/paragraph/3",
+    "policy/paragraph/2",
+    "policy/paragraph/1"
+  ],
+  "model_mode": "ok",
+  "target": null
+}

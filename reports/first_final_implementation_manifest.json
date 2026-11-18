@@ -1,0 +1,24 @@
+{
+  "created_before_run_utc": "2026-11-17T16:50:39.775282+00:00",
+  "python": "3.14.6",
+  "platform": "macOS-26.7.1-arm64-arm-64bit-Mach-O",
+  "dataset_manifest_sha256": "2779cee46e9154d491b11bd5d6bbed9294f1a1bad8e6e1be5ee99d2d44796176",
+  "files": {
+    "reviewer/__init__.py": "e688020e0b65e88648b566d6df7db4a4d31e4c8fa5a1443b23cb11cfb8b627a1",
+    "reviewer/prompt.txt": "30b83b0f1a0a6d86ffc3dce01bdc18e2692b3e2b3a8e6d2201ed630157c92c19",
+    "reviewer/model.py": "d1cf02f70a840d95000750c126d6ac6976e4f23bde44923b3d9d38d48a8229bd",
+    "reviewer/engine.py": "dffdc1c813ff76739cfcc90755b66caaf60e959556e5163c498cc7b70a581205",
+    "reviewer/language.py": "c021f4f0bd8830bef97265446a621ddbb50301dcd2e20666ae68526636e2e530",
+    "reviewer/contracts.py": "67d0ead7cf2b347ae0311fb7b669ab757073d28a2d97292c9614697b343bcff8",
+    "reviewer/__main__.py": "2f2725522846a4890a108f755a932bf6f894170e40ffec362a8dcac899700956",
+    "schemas/report.schema.json": "4cfc44ec8bdb4e03dbbe4ee4cf6030021b1b99602f4760f07f521489fa3de38c",
+    "schemas/bundle.schema.json": "1ca0391bfeb50c628ba0e6c09d409a6a02d3914cfc4cc623fe4a8f3b076722b0",
+    "scripts/generate_cases.py": "54d69efd2913369f0595eac77763a74ca96834a05a0ec15f8b6f5f1b093aea8e",
+    "scripts/checkpoint.py": "fec36a31c716b59138b91659c88adc50d4a4a6fde08f78bdb1a49822112156f6",
+    "scripts/debug_examples.py": "3e024ce6979d74a619911d3e3aab745177acc6e17f3aa842e5880a750cf02ca6",
+    "scripts/evaluate.py": "303f73189d30f8d44b00e898134d76aa84f973d2d4568632e9b5032e4fefd91c",
+    "scripts/oracle.py": "2706c81eebb62b335aa4e0ae492a545ef8560f943ff822c94fb2ef44f136e726",
+    "scripts/verify.py": "9e66bc4fac15f17bef99cad19b66206b748eec22f4cfc7b724b786526c869bb5",
+    "tests/test_reviewer.py": "13fe2bc003256b626430e9b37fa97a046b97d31a48f5276e5ec8c7634c908b91"
+  }
+}

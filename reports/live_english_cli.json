@@ -1,0 +1,178 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "1 evidenced blocker(s); 0 unreviewed scope item(s).",
+  "findings": [
+    {
+      "severity": "blocker",
+      "kind": "behavior_mismatch",
+      "rule_ref": "R0",
+      "artifact": "workflow",
+      "version": 1,
+      "location": "/nodes/0",
+      "message": "Expected escalation; observed normal in supported semantics.",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "terminal/policy/1",
+          "quote": "Escalate tickets waiting 30 minutes or more."
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/0",
+          "quote": "{\"false\": \"n1\", \"id\": \"n0\", \"kind\": \"decision\", \"snippet_id\": \"main\", \"true\": \"out0\", \"when\": {\"field\": \"waiting\", \"op\": \"gt\", \"value\": 30}}"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/2",
+          "quote": "{\"false\": \"n2\", \"id\": \"n1\", \"kind\": \"decision\", \"true\": \"out1\", \"when\": true}"
+        },
+        {
+          "artifact": "workflow",
+          "version": 1,
+          "location": "/nodes/3",
+          "quote": "{\"id\": \"out1\", \"kind\": \"route\", \"route\": \"normal\"}"
+        }
+      ],
+      "counterexample": {
+        "ticket": {
+          "waiting": 30
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      },
+      "trace": [
+        "/nodes/0",
+        "/nodes/2",
+        "/nodes/3"
+      ],
+      "correction": "Implement 'Escalate tickets waiting 30 minutes or more.' in workflow; preserve earlier exceptions and route this ticket to escalation."
+    }
+  ],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "R0",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "terminal/policy/1",
+            "quote": "Escalate tickets waiting 30 minutes or more."
+          }
+        ],
+        "status": "reviewed"
+      },
+      {
+        "rule_ref": "R1",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "terminal/policy/2",
+            "quote": "Send all remaining tickets to the normal queue."
+          }
+        ],
+        "status": "reviewed"
+      }
+    ],
+    "unreviewed": [],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 6,
+    "reachable_nodes": [
+      "n0",
+      "n1",
+      "out0",
+      "out1"
+    ],
+    "unreachable_nodes": []
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "specification_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "workflow_semantics",
+      "status": "CHANGES_REQUIRED",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "code_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 6
+    },
+    {
+      "check": "model_review",
+      "status": "PASS"
+    }
+  ],
+  "model": {
+    "client": "live-local-ollama",
+    "configuration": {
+      "model": "qwen3.5:9b",
+      "temperature": 0,
+      "timeout_seconds": 90,
+      "max_attempts": 2,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000,
+      "context_window": 32768,
+      "thinking": false
+    },
+    "prompt_sha256": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+    "response_schema_sha256": "a5ade2f8f9ce969a748eb06d2acc9a08808868ee5f774f44e7c0498dacf2e13a",
+    "request_sha256": "21f6a61c26e0a8d2008531cde409ca83b88ca11cefc3e08fb06c0377de25e0d0",
+    "request_bytes": 5018,
+    "attempts": [
+      {
+        "attempt": 1,
+        "transport": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-17T21:24:02.933675Z",
+          "done_reason": "stop",
+          "prompt_eval_count": 1111,
+          "eval_count": 16
+        },
+        "response_sha256": "72ea961904b3203aa7aefa539e370b003ce13963c9cad3923d80a789a188ea55",
+        "response": "{\"coverage\": [\"R0\",\"R1\"],\"claims\":[] }",
+        "result": "validated",
+        "seconds": 6.952812999999878
+      }
+    ],
+    "calls": 1,
+    "retries": 0,
+    "requested_rules": [
+      "R0",
+      "R1"
+    ],
+    "scope": "residual_ambiguity_of_formal_policy"
+  },
+  "provenance": {
+    "reviewer_version": "0.5.0",
+    "cache": "disabled",
+    "bundle_sha256": "4b01f3cefdffb8768f9bbc5a82e9a9bda63f6798d20092518a7c98bbea365176"
+  },
+  "ticket_results": [],
+  "resources": {
+    "seconds": 6.9534429169998475,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

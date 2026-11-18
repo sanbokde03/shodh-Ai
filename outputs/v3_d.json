@@ -1,0 +1,160 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "2 problems found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to normal, but the Python code returns ERROR:KeyError.",
+      "severity": "blocker",
+      "rule_ref": "policy_25524_3",
+      "artifact": "code",
+      "version": 5,
+      "location": "Python snippet 'main', line 4",
+      "reference": "main:4",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/4",
+          "quote": "For all remaining tickets, send the ticket to the normal queue."
+        },
+        {
+          "artifact": "code",
+          "version": 5,
+          "location": "main:4",
+          "quote": "    if ticket[\"urgent\"] == True:"
+        }
+      ],
+      "correction": "Implement 'For all remaining tickets, send the ticket to the normal queue.' in code; preserve earlier exceptions and route this ticket to normal.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing"
+        },
+        "expected_route": "normal",
+        "actual_route": "ERROR:KeyError"
+      }
+    },
+    {
+      "problem": "This ticket should go to escalation, but the Python code returns ERROR:KeyError.",
+      "severity": "blocker",
+      "rule_ref": "policy_21467_2",
+      "artifact": "code",
+      "version": 5,
+      "location": "Python snippet 'main', line 4",
+      "reference": "main:4",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 45 minutes, escalate the ticket."
+        },
+        {
+          "artifact": "code",
+          "version": 5,
+          "location": "main:4",
+          "quote": "    if ticket[\"urgent\"] == True:"
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 45 minutes, escalate the ticket.' in code; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 45
+        },
+        "expected_route": "escalation",
+        "actual_route": "ERROR:KeyError"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "policy_90633_0": "reviewed",
+      "policy_20125_1": "reviewed",
+      "policy_21467_2": "reviewed",
+      "policy_25524_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 5.715156541999022,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "184a25a150d4f2e94ed96e987188c3d27779e2792d0ef0716361f86224050479",
+      "request_sha256": "d2f1c84a99f5e5a2a76e41390ee8d9b478d6dd2b968d2d1303f63233cf5f0266",
+      "request_bytes": 6927,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "d2f1c84a99f5e5a2a76e41390ee8d9b478d6dd2b968d2d1303f63233cf5f0266",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:47:31.265603Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1645,
+            "eval_count": 50
+          },
+          "response_sha256": "551a775ab4f30b9780001f6a1c6384c6fe24beaf884d111aeab93cdcfe9c8f52",
+          "response": "{\"coverage\": [\"policy_90633_0\",\"policy_20125_1\",\"policy_21467_2\",\"policy_25524_3\"],\"claims\": []}",
+          "result": "validated",
+          "seconds": 5.712953166999796
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_90633_0",
+        "policy_20125_1",
+        "policy_21467_2",
+        "policy_25524_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "851d6bad570d74cd4d7d673f3c91f6aaec706f6049fad6d312480e4cd41bc96a"
+    }
+  }
+}

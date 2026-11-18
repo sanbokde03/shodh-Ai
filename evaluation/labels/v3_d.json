@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "holdout",
+  "reason": "Categorized ticket without urgent/waiting keys should use normal fallback; code raises KeyError on urgent.",
+  "model_mode": "ok",
+  "source_evidence": [
+    "policy/paragraph/4",
+    "policy/paragraph/2",
+    "policy/paragraph/3",
+    "policy/paragraph/1"
+  ],
+  "target": {
+    "artifact": "code",
+    "rule_ref": "policy_25524_3",
+    "location": "main:4"
+  }
+}

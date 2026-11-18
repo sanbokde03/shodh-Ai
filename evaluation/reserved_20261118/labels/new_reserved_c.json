@@ -1,0 +1,25 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "reason": "At exactly the cutoff with enough attempts, workflow uses > instead of >= and chooses normal.",
+  "target": {
+    "artifact": "workflow",
+    "rule_ref": "policy_95725_2",
+    "location": "/nodes/2"
+  },
+  "oracle": {
+    "age": "age_95725",
+    "tries": "attempts_95725",
+    "urgent": "urgent_95725",
+    "topic": "topic_95725",
+    "threshold_seconds": 1560,
+    "minimum": 2,
+    "priority_minimum": 8,
+    "routes": [
+      "Manual_95725",
+      "Priority_95725",
+      "Escalation_95725",
+      "Normal_95725"
+    ]
+  }
+}

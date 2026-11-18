@@ -1,0 +1,119 @@
+# Case: reserved_a
+
+## Ticket details
+
+category: choice (billing,technical)  
+urgent: yes-no  
+waiting: number (minutes)
+
+## Company rules
+
+### policy_93
+
+- Order: 2
+
+If waiting time is at least 37 minutes, escalate the ticket.
+
+### policy_92
+
+If the ticket is urgent, send the ticket to the priority queue.
+
+### policy_91
+
+- Order: 0
+
+If category is missing, send the ticket for manual review.
+
+### policy_94
+
+For all remaining tickets, send the ticket to the normal queue.
+
+## Specification
+
+### S1
+
+- Company rule: policy_91
+- When: category is missing
+- Route: manual
+
+### S4
+
+- Order: 3
+- Company rule: policy_94
+- When: always
+- Route: normal
+
+### S2
+
+- Order: 1
+- Company rule: policy_92
+- When: urgent is true
+- Route: priority
+
+### S3
+
+- Order: 2
+- Company rule: policy_93
+- When: waiting is at least 37 minutes
+- Route: escalation
+
+## Workflow
+
+- Start: n1
+
+### n2
+
+- Company rule: policy_92
+- When: urgent is true
+- Yes: out_priority
+- No: n3
+
+### n1
+
+- Company rule: policy_91
+- Code: main
+- When: category is missing
+- Yes: out_manual
+- No: n2
+
+### out_priority
+
+- Route: priority
+
+### n3
+
+- Company rule: policy_93
+- When: waiting is at least 37 minutes
+- Yes: out_escalation
+- No: out_normal
+
+### out_manual
+
+- Route: manual
+
+### out_normal
+
+- Route: normal
+
+### out_escalation
+
+- Route: escalation
+
+## Python
+
+### main
+
+```python
+def route(ticket):
+    if ticket.get("category") is None:
+        return "manual"
+    if ticket.get("urgent") == True:
+        return "priority"
+    if ticket.get("waiting") is not None and ticket.get("waiting") >= 37:
+        return "escalation"
+    return "normal"
+```
+
+## Approvals
+
+None.

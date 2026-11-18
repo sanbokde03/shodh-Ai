@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "summary": "The specification, workflow and Python follow the company rules.",
+  "mode": "ai",
+  "findings": [],
+  "coverage": {
+    "rules": {
+      "policy_49227_0": "reviewed",
+      "policy_49227_1": "reviewed",
+      "policy_49227_2": "reviewed",
+      "policy_49227_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "ticket_results": [
+    {
+      "ticket": {
+        "age_49227": 960,
+        "attempts_49227": 2,
+        "urgent_49227": false,
+        "topic_49227": "billing"
+      },
+      "expected_route": "Escalation_49227",
+      "artifacts": {
+        "specification": "Escalation_49227",
+        "workflow": "Escalation_49227",
+        "code": "Escalation_49227"
+      }
+    },
+    {
+      "ticket": {
+        "age_49227": 960,
+        "attempts_49227": 7,
+        "urgent_49227": true
+      },
+      "expected_route": "Manual_49227",
+      "artifacts": {
+        "specification": "Manual_49227",
+        "workflow": "Manual_49227",
+        "code": "Manual_49227"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 21.15652887500073,
+    "model_calls": 2,
+    "model_retries": 1
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "25cf8759fb6833c1432ff9e4d70b5650cb8c6dafd7446a697d253011ef4584ee",
+      "request_sha256": "60c5c4016d752af65431488b5e758e7206cc048003fbd601b3c65fda835304cb",
+      "request_bytes": 8126,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "60c5c4016d752af65431488b5e758e7206cc048003fbd601b3c65fda835304cb",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:04:16.132324Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2302,
+            "eval_count": 201
+          },
+          "response_sha256": "ccb63532ff1f998ee847edf9a1a2663a95c2bd78a109faec7fba881be19a3945",
+          "response": "{\"coverage\": [\"policy_49227_0\",\"policy_49227_1\",\"policy_49227_2\",\"policy_49227_3\"],\"claims\":[{\"rule_ref\":\"policy_49227_2\",\"judgment\":\"ambiguous\",\"artifact\":\"approvals\",\"version\":2,\"location\":\"/approvals/0\",\"quote\":\"If age_49227 is at least 16 minutes and attempts_49227 is at least 2, send the ticket to \\\\\\\"Escalation_49227\\\\\\\".\",\"explanation\":\"The source text uses 'minutes' for the time unit, but the field_contract defines age_49227 as having the native unit 'seconds'. The condition value '16 minutes' is not an exact rational string in the field's native unit (seconds), creating a residual ambiguity regarding the numeric threshold intended.\"}]}",
+          "result": "rejected",
+          "error": "Unsupported: Ambiguity claim contradicts a complete declared-language interpretation. Boolean grouping, comparisons, units and missing values are already defined. Recheck the supplied interpretation; return no ambiguity claim for settled syntax.",
+          "seconds": 16.64736412500133
+        },
+        {
+          "attempt": 2,
+          "request_sha256": "b96a62403b2d48f582479a41a9d84267f1aec04c58b60b416f50c41b0b2ca55a",
+          "validation_feedback": "Unsupported: Ambiguity claim contradicts a complete declared-language interpretation. Boolean grouping, comparisons, units and missing values are already defined. Recheck the supplied interpretation; return no ambiguity claim for settled syntax.",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:04:20.636253Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2348,
+            "eval_count": 49
+          },
+          "response_sha256": "78ca399065c62de1623d68f2ed871bc0cc68269250892c2033147d2c02efb511",
+          "response": "{\"coverage\": [\"policy_49227_0\",\"policy_49227_1\",\"policy_49227_2\",\"policy_49227_3\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 4.500743917000364
+        }
+      ],
+      "calls": 2,
+      "retries": 1,
+      "requested_rules": [
+        "policy_49227_0",
+        "policy_49227_1",
+        "policy_49227_2",
+        "policy_49227_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "900ede108baa991009f935c4a7598885a6bffc78a1819fe05505327abed3fb34"
+    }
+  }
+}

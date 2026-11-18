@@ -1,0 +1,123 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "1 problem found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to escalation, but the specification returns normal.",
+      "severity": "blocker",
+      "rule_ref": "R3",
+      "artifact": "specification",
+      "version": 1,
+      "location": "Specification rule 'S4'",
+      "reference": "/rules/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 30 minutes, escalate the ticket."
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 30 minutes, escalate the ticket.' in specification; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 30
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "R1": "reviewed",
+      "R2": "reviewed",
+      "R3": "reviewed",
+      "R4": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 1.2635124580010597,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+      "request_sha256": "f42b6dcf4aa6f3866f32917319d0e3c5f1b7763a5b44e483f47745f288e9174c",
+      "request_bytes": 6819,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "f42b6dcf4aa6f3866f32917319d0e3c5f1b7763a5b44e483f47745f288e9174c",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:46:38.815145Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1586,
+            "eval_count": 21
+          },
+          "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+          "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 1.2601378330000443
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "3343de675d4df344be3ce211e243313c7743a8801ec686fb37112ea5b556182d"
+    }
+  }
+}

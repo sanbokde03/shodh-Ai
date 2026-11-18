@@ -1,0 +1,152 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "1 problem found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to Manual_19174, but the workflow returns Priority_19174.",
+      "severity": "blocker",
+      "rule_ref": "policy_19174_0",
+      "artifact": "workflow",
+      "version": 3,
+      "location": "Workflow step 'check_priority': condition",
+      "reference": "/nodes/1",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "new_policy/19174/paragraph/1",
+          "quote": "If topic_19174 is missing, send the ticket to \"Manual_19174\"."
+        }
+      ],
+      "correction": "Implement 'If topic_19174 is missing, send the ticket to \"Manual_19174\".' in workflow; preserve earlier exceptions and route this ticket to Manual_19174.",
+      "counterexample": {
+        "ticket": {
+          "attempts_19174": 7,
+          "urgent_19174": true
+        },
+        "expected_route": "Manual_19174",
+        "actual_route": "Priority_19174"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "policy_19174_0": "reviewed",
+      "policy_19174_1": "reviewed",
+      "policy_19174_2": "reviewed",
+      "policy_19174_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:router",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "ticket_results": [
+    {
+      "ticket": {
+        "age_19174": 1140,
+        "attempts_19174": 3,
+        "urgent_19174": false,
+        "topic_19174": "billing"
+      },
+      "expected_route": "Escalation_19174",
+      "artifacts": {
+        "specification": "Escalation_19174",
+        "workflow": "Escalation_19174",
+        "code": "Escalation_19174"
+      }
+    },
+    {
+      "ticket": {
+        "age_19174": 1140,
+        "attempts_19174": 7,
+        "urgent_19174": true
+      },
+      "expected_route": "Manual_19174",
+      "artifacts": {
+        "specification": "Manual_19174",
+        "workflow": "Priority_19174",
+        "code": "Manual_19174"
+      }
+    }
+  ],
+  "resources": {
+    "seconds": 8.034107833000235,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "5869b57ec5910f86bf6458c98f586856e3f299959a343ada47426a4c2aeff008",
+      "request_sha256": "59a43525852266cd374330d366e9038697fa8e6d19f91f7dd69260e88b5772d4",
+      "request_bytes": 7754,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "59a43525852266cd374330d366e9038697fa8e6d19f91f7dd69260e88b5772d4",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T23:04:36.800072Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 2175,
+            "eval_count": 49
+          },
+          "response_sha256": "eda63bd70396fe666e434b52b0c552d8baa1873be5b52ae8af07a0e1341e7a5b",
+          "response": "{\"coverage\": [\"policy_19174_0\",\"policy_19174_1\",\"policy_19174_2\",\"policy_19174_3\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 8.019130292001137
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_19174_0",
+        "policy_19174_1",
+        "policy_19174_2",
+        "policy_19174_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "c511db4ef627d7cb0198229a0c8d820e0aa30bf718c004f3d76432564e61d020"
+    }
+  }
+}

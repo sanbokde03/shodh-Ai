@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "kind": "valid",
+  "reason": "NOT(less than cutoff OR missing) is equivalent to a guarded inclusive cutoff; an unapproved proposal has no effect.",
+  "target": null,
+  "oracle": {
+    "age": "age_76682",
+    "tries": "attempts_76682",
+    "urgent": "urgent_76682",
+    "topic": "topic_76682",
+    "threshold_seconds": 1320,
+    "minimum": 3,
+    "priority_minimum": 7,
+    "routes": [
+      "Manual_76682",
+      "Priority_76682",
+      "Escalation_76682",
+      "Normal_76682"
+    ]
+  }
+}

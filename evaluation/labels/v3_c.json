@@ -1,0 +1,14 @@
+{
+  "status": "INCOMPLETE",
+  "kind": "incomplete",
+  "split": "holdout",
+  "reason": "Approved and rejected records claim the same rule version in the same revision scope without a resolution.",
+  "model_mode": "ok",
+  "source_evidence": [
+    "policy/paragraph/4",
+    "policy/paragraph/1",
+    "policy/paragraph/3",
+    "policy/paragraph/2"
+  ],
+  "target": null
+}

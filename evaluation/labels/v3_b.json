@@ -1,0 +1,18 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "split": "holdout",
+  "reason": "At the source threshold, a categorized nonurgent ticket must escalate; workflow waits one extra minute.",
+  "model_mode": "ok",
+  "source_evidence": [
+    "policy/paragraph/3",
+    "policy/paragraph/4",
+    "policy/paragraph/1",
+    "policy/paragraph/2"
+  ],
+  "target": {
+    "artifact": "workflow",
+    "rule_ref": "policy_73123_2",
+    "location": "/nodes/2"
+  }
+}

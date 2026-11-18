@@ -1,0 +1,32 @@
+Current regression tests against the preserved v0.2.0 engine.
+test_complete_coverage_can_report_no_additional_claims (test_audit_regressions.AuditRegressions.test_complete_coverage_can_report_no_additional_claims) ... ok
+test_context_budget_abstains_before_a_call (test_audit_regressions.AuditRegressions.test_context_budget_abstains_before_a_call) ... ok
+test_correct_graph_exposes_wrong_nested_code (test_audit_regressions.AuditRegressions.test_correct_graph_exposes_wrong_nested_code) ... ok
+test_linked_code_is_checked_but_is_not_policy_evidence (test_audit_regressions.AuditRegressions.test_linked_code_is_checked_but_is_not_policy_evidence) ... ok
+test_live_transport_uses_the_declared_context_and_thinking_setting (test_audit_regressions.AuditRegressions.test_live_transport_uses_the_declared_context_and_thinking_setting) ... ok
+test_location_scoring_does_not_credit_a_quote_elsewhere (test_audit_regressions.AuditRegressions.test_location_scoring_does_not_credit_a_quote_elsewhere) ... ok
+test_model_does_not_receive_superseded_or_implementation_thresholds (test_audit_regressions.AuditRegressions.test_model_does_not_receive_superseded_or_implementation_thresholds) ... ok
+test_model_receives_computed_meaning_and_binding_scope (test_audit_regressions.AuditRegressions.test_model_receives_computed_meaning_and_binding_scope) ... ok
+test_opposite_approval_decisions_are_unresolved (test_audit_regressions.AuditRegressions.test_opposite_approval_decisions_are_unresolved) ... ok
+test_out_of_scope_rejection_is_not_a_conflict (test_audit_regressions.AuditRegressions.test_out_of_scope_rejection_is_not_a_conflict) ... ok
+test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) ... ok
+test_proposal_and_approval_can_coexist (test_audit_regressions.AuditRegressions.test_proposal_and_approval_can_coexist) ... ok
+test_source_evidence_is_valid_but_implementation_cannot_define_policy (test_audit_regressions.AuditRegressions.test_source_evidence_is_valid_but_implementation_cannot_define_policy) ... ok
+test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) ... ok
+test_unresolved_language_has_explicit_model_scope_and_stays_unreviewed (test_audit_regressions.AuditRegressions.test_unresolved_language_has_explicit_model_scope_and_stays_unreviewed) ... ok
+test_wrong_graph_does_not_blame_correct_nested_code (test_audit_regressions.AuditRegressions.test_wrong_graph_does_not_blame_correct_nested_code) ... FAIL
+test_wrong_graph_still_checks_entry_and_valid_nested_paths (test_audit_regressions.AuditRegressions.test_wrong_graph_still_checks_entry_and_valid_nested_paths) ... ok
+
+======================================================================
+FAIL: test_wrong_graph_does_not_blame_correct_nested_code (test_audit_regressions.AuditRegressions.test_wrong_graph_does_not_blame_correct_nested_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 46, in test_wrong_graph_does_not_blame_correct_nested_code
+    self.assertFalse(any(f["artifact"] == "code" for f in r["findings"]))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.028s
+
+FAILED (failures=1)

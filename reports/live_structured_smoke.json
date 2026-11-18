@@ -1,0 +1,161 @@
+{
+  "status": "INCOMPLETE",
+  "summary": "0 evidenced blocker(s); 1 unreviewed scope item(s).",
+  "findings": [],
+  "coverage": {
+    "rules": [
+      {
+        "rule_ref": "R1",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/1",
+            "quote": "IF category IS MISSING THEN manual"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R2",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/2",
+            "quote": "IF urgent = true THEN priority"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R3",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/3",
+            "quote": "IF waiting >= 30 minutes THEN escalation"
+          }
+        ],
+        "status": "partially_reviewed"
+      },
+      {
+        "rule_ref": "R4",
+        "version": 1,
+        "source": [
+          {
+            "artifact": "source",
+            "version": 1,
+            "location": "policy/paragraph/4",
+            "quote": "OTHERWISE THEN normal"
+          }
+        ],
+        "status": "partially_reviewed"
+      }
+    ],
+    "unreviewed": [
+      {
+        "scope": "model_ambiguity",
+        "reason": "The use of 'IS MISSING' for the category field is ambiguous because it could be interpreted as the category field being absent or null, or as the category field not matching any of the enum values 'billing' or 'technical'. The field_contract does not specify the behavior for an absent or null category field.",
+        "rule_ref": "R1"
+      }
+    ],
+    "method": "exhaustive integer predicate partition",
+    "representative_tickets": 96,
+    "reachable_nodes": [
+      "n1",
+      "n2",
+      "n3",
+      "out_escalation",
+      "out_manual",
+      "out_normal",
+      "out_priority"
+    ],
+    "unreachable_nodes": []
+  },
+  "check_results": [
+    {
+      "check": "contracts_and_approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code_syntax:main",
+      "status": "PASS",
+      "execution": "not executed; restricted AST interpreter"
+    },
+    {
+      "check": "specification_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "workflow_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "code_semantics",
+      "status": "PASS",
+      "method": "exhaustive predicate partition",
+      "representatives": 96
+    },
+    {
+      "check": "model_ambiguity",
+      "status": "INCOMPLETE",
+      "detail": "The use of 'IS MISSING' for the category field is ambiguous because it could be interpreted as the category field being absent or null, or as the category field not matching any of the enum values 'billing' or 'technical'. The field_contract does not specify the behavior for an absent or null category field."
+    },
+    {
+      "check": "model_review",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "model": {
+    "client": "live-local-ollama",
+    "configuration": {
+      "model": "qwen2.5:3b-instruct",
+      "temperature": 0,
+      "timeout_seconds": 30,
+      "max_attempts": 1,
+      "max_output_tokens": 2048,
+      "max_request_bytes": 200000
+    },
+    "prompt_sha256": "2adc0d09a0b63381b5ffafcc7e032dfb16112cca14b28616d2a385bf76e4d2d5",
+    "response_schema_sha256": "79f0d01b658e1f577ac82e47f1c93bdd5b87dce49b171f0826eba0816819f8b8",
+    "request_sha256": "5cb05546c9250b93e9cc259a8412dcda608e6bdb39f7a31c439f4af157bc9f07",
+    "attempts": [
+      {
+        "attempt": 1,
+        "transport": {
+          "model": "qwen2.5:3b-instruct",
+          "created_at": "2026-11-17T16:59:15.210904Z",
+          "done_reason": "stop",
+          "prompt_eval_count": 1938,
+          "eval_count": 342
+        },
+        "response_sha256": "0ffe2a3e89ea5559fd073d8e51fae8c501cf2e33f1971b27e0b9d02131f36deb",
+        "response": "{\"coverage\": [\"R1\", \"R2\", \"R3\", \"R4\"], \"claims\": [{\"rule_ref\": \"R1\", \"judgment\": \"ambiguous\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/1\", \"quote\": \"IF category IS MISSING THEN manual\", \"explanation\": \"The use of 'IS MISSING' for the category field is ambiguous because it could be interpreted as the category field being absent or null, or as the category field not matching any of the enum values 'billing' or 'technical'. The field_contract does not specify the behavior for an absent or null category field.\"}, {\"rule_ref\": \"R2\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/2\", \"quote\": \"IF urgent = true THEN priority\", \"explanation\": \"The rule is clear and does not leave any ambiguity.\"}, {\"rule_ref\": \"R3\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/3\", \"quote\": \"IF waiting >= 30 minutes THEN escalation\", \"explanation\": \"The rule is clear and does not leave any ambiguity.\"}, {\"rule_ref\": \"R4\", \"judgment\": \"no_additional_issue\", \"artifact\": \"source\", \"version\": 1, \"location\": \"policy/paragraph/4\", \"quote\": \"OTHERWISE THEN normal\", \"explanation\": \"The rule is clear and does not leave any ambiguity.\"}]}",
+        "result": "validated",
+        "seconds": 21.13695074999123
+      }
+    ],
+    "calls": 1,
+    "retries": 0
+  },
+  "provenance": {
+    "reviewer_version": "0.1.0",
+    "cache": "disabled",
+    "bundle_sha256": "55b1a9e11fa9907d435b0dfaf730b2f703bc5d60a54efa866757b6db8171cfac"
+  },
+  "ticket_results": [],
+  "resources": {
+    "seconds": 21.143940374982776,
+    "model_calls": 1,
+    "model_retries": 0
+  }
+}

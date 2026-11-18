@@ -1,0 +1,122 @@
+{
+  "defect_boundary": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "a439684398c7187f91283ed461f73d7628dffb6bdfc043e47993b5dc432858a9"
+  },
+  "defect_branch": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "78962ab4a6f9394cda347af1b7b3c4515382c7b457194499f3f22fadef84a290"
+  },
+  "defect_code": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "ef4c03df78d8a6f479998ee5bf274eac5ea3e3c41d077a240d88de261ffb4de7"
+  },
+  "defect_omission": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "3343de675d4df344be3ce211e243313c7743a8801ec686fb37112ea5b556182d"
+  },
+  "defect_precedence": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "0b4cea483f8903aef11bde62be6d6311169277c483c495de5c8ef7fe1f2f8d27"
+  },
+  "defect_stale_revision": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "01627a05bc2d4b8057cbddd3d4874271d258a42848a67161a31ccbbba17c9358"
+  },
+  "incomplete_ambiguous": {
+    "status": "INCOMPLETE",
+    "model_mode": "ok",
+    "bundle_sha256": "18d7aa9b406a2c9ba6cade1bbd4027877bf66a6829c4f8d02245fa392e2f71f1"
+  },
+  "incomplete_approval_conflict": {
+    "status": "INCOMPLETE",
+    "model_mode": "ok",
+    "bundle_sha256": "e132e9ae8bb5732113419c4f6fc68b381ec92b6f62a328a44caa8809b01dbed7"
+  },
+  "incomplete_injected_prose": {
+    "status": "INCOMPLETE",
+    "model_mode": "ok",
+    "bundle_sha256": "1d1476b623d9efcad267dda518355251cccb8ca5c4d32a3db1456863caea722a"
+  },
+  "incomplete_invented_citation": {
+    "status": "INCOMPLETE",
+    "model_mode": "invented",
+    "bundle_sha256": "b5d77818b16455ada3c2741a283828bc90b7cf3dd4b67c9d76383961731b8bd1"
+  },
+  "incomplete_timeout": {
+    "status": "INCOMPLETE",
+    "model_mode": "timeout",
+    "bundle_sha256": "1a48c5576ec465cb18e6aaf2d0f5240b029f123459011769547d3e4004d0381f"
+  },
+  "reserved_a": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "eb7a711dbe5c046332830a68613b0f08726b5aad4bdba8ce154427eab371dedd"
+  },
+  "reserved_b": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "d05cd3aceb024566fee6254d8b78050129967821e59df9d2605b5616bc99fa58"
+  },
+  "reserved_c": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "21313e0be3c6ce1de90bf74ed239f6022a131474f67be1fe0db78abb34fe400e"
+  },
+  "reserved_d": {
+    "status": "INCOMPLETE",
+    "model_mode": "truncated",
+    "bundle_sha256": "a404bfa88249a96a9b200e81b797a919bdf122ad3142fc513d1fd25f38d7fb6d"
+  },
+  "v3_a": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "f4becf2810370bc3124fe1aeeed5c9ff6ba2553aa53385fc0e0b9ab14c23607d"
+  },
+  "v3_b": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "04bebee833ddae8ba1e0d483fd6635fbf1cc8c6aaa2ffd342ff7135b6b265b97"
+  },
+  "v3_c": {
+    "status": "INCOMPLETE",
+    "model_mode": "ok",
+    "bundle_sha256": "f885ab50343e77d999855072de36750469e3f956adb113fdc8691a97e7425d52"
+  },
+  "v3_d": {
+    "status": "CHANGES_REQUIRED",
+    "model_mode": "ok",
+    "bundle_sha256": "851d6bad570d74cd4d7d673f3c91f6aaec706f6049fad6d312480e4cd41bc96a"
+  },
+  "valid_approved": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "40c43e37514ebf93f0da7d78b21e453a906230a99e4427e4531fb39880aa6f97"
+  },
+  "valid_base": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "70b7b2a6d60edca700c8487c6093c07b4dce3e6402db701674e18953ffd5ed3c"
+  },
+  "valid_renamed_pair": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "ca161161320e54c1556ae173ef92f8b8611d8ed68e3a82cb8b6afdf5e4874192"
+  },
+  "valid_unapproved_ignored": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "dad632576910966fd4dbb72de2c8e715bc7e759364dc532686201265dca5767d"
+  },
+  "valid_unusual_units": {
+    "status": "PASS",
+    "model_mode": "ok",
+    "bundle_sha256": "3de90ab20eabb5d0098d8a47248eb3e6f3f4297a1bc4b839a69bd45d3ac57fdb"
+  }
+}

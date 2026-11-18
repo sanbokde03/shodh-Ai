@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "id": "v3_c",
+  "revision": 62,
+  "fields": {
+    "category": {
+      "type": "enum",
+      "values": [
+        "billing",
+        "technical",
+        "research"
+      ]
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": [
+    {
+      "id": "policy_89907_3",
+      "order": 3,
+      "version": 1,
+      "location": "policy/paragraph/4",
+      "text": "OTHERWISE THEN normal"
+    },
+    {
+      "id": "policy_86792_0",
+      "order": 0,
+      "version": 1,
+      "location": "policy/paragraph/1",
+      "text": "IF category IS MISSING THEN manual"
+    },
+    {
+      "id": "policy_27673_2",
+      "order": 2,
+      "version": 1,
+      "location": "policy/paragraph/3",
+      "text": "WHEN waiting >= 75 minutes THEN escalation"
+    },
+    {
+      "id": "policy_81034_1",
+      "order": 1,
+      "version": 1,
+      "location": "policy/paragraph/2",
+      "text": "IF urgent = true THEN priority"
+    }
+  ],
+  "specification": {
+    "version": 6,
+    "rules": [
+      {
+        "id": "S1",
+        "rule_ref": "policy_86792_0",
+        "order": 0,
+        "when": {
+          "field": "category",
+          "op": "missing"
+        },
+        "route": "manual"
+      },
+      {
+        "id": "S2",
+        "rule_ref": "policy_81034_1",
+        "order": 1,
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        },
+        "route": "priority"
+      },
+      {
+        "id": "S3",
+        "rule_ref": "policy_27673_2",
+        "order": 2,
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 75,
+          "unit": "minutes"
+        },
+        "route": "escalation"
+      },
+      {
+        "id": "S4",
+        "rule_ref": "policy_89907_3",
+        "order": 3,
+        "when": true,
+        "route": "normal"
+      }
+    ]
+  },
+  "workflow": {
+    "version": 11,
+    "entry": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "kind": "decision",
+        "rule_ref": "policy_86792_0",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        },
+        "true": "out_manual",
+        "false": "n2",
+        "snippet_id": "main"
+      },
+      {
+        "id": "n2",
+        "kind": "decision",
+        "rule_ref": "policy_81034_1",
+        "when": {
+          "field": "urgent",
+          "op": "eq",
+          "value": true
+        },
+        "true": "out_priority",
+        "false": "n3"
+      },
+      {
+        "id": "n3",
+        "kind": "decision",
+        "rule_ref": "policy_27673_2",
+        "when": {
+          "field": "waiting",
+          "op": "gte",
+          "value": 75,
+          "unit": "minutes"
+        },
+        "true": "out_escalation",
+        "false": "out_normal"
+      },
+      {
+        "id": "out_manual",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "out_priority",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "out_escalation",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "out_normal",
+        "kind": "route",
+        "route": "normal"
+      }
+    ]
+  },
+  "snippets": [
+    {
+      "id": "main",
+      "version": 5,
+      "code": "def route(ticket):\n    if ticket.get(\"category\") is None:\n        return \"manual\"\n    if ticket.get(\"urgent\") == True:\n        return \"priority\"\n    if ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 75:\n        return \"escalation\"\n    return \"normal\"\n"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "decision_a",
+      "rule_ref": "policy_27673_2",
+      "status": "approved",
+      "from_revision": 62,
+      "to_revision": 62,
+      "sequence": 1,
+      "base_version": 1,
+      "version": 2,
+      "text": "WHEN waiting >= 75 minutes THEN escalation"
+    },
+    {
+      "id": "decision_b",
+      "rule_ref": "policy_27673_2",
+      "status": "rejected",
+      "from_revision": 62,
+      "to_revision": 62,
+      "sequence": 1,
+      "base_version": 1,
+      "version": 2,
+      "text": "WHEN waiting >= 75 minutes THEN escalation"
+    }
+  ]
+}

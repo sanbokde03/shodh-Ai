@@ -1,0 +1,149 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "2 problems found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to manual, but the workflow returns escalation.",
+      "severity": "blocker",
+      "rule_ref": "R1",
+      "artifact": "workflow",
+      "version": 1,
+      "location": "Workflow step 'n3': condition",
+      "reference": "/nodes/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/1",
+          "quote": "If category is missing, send the ticket for manual review."
+        }
+      ],
+      "correction": "Implement 'If category is missing, send the ticket for manual review.' in workflow; preserve earlier exceptions and route this ticket to manual.",
+      "counterexample": {
+        "ticket": {
+          "waiting": 30
+        },
+        "expected_route": "manual",
+        "actual_route": "escalation"
+      }
+    },
+    {
+      "problem": "This ticket should go to priority, but the workflow returns escalation.",
+      "severity": "blocker",
+      "rule_ref": "R2",
+      "artifact": "workflow",
+      "version": 1,
+      "location": "Workflow step 'n3': condition",
+      "reference": "/nodes/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/2",
+          "quote": "If (the ticket is urgent and category is \"technical\"), send the ticket to the priority queue."
+        }
+      ],
+      "correction": "Implement 'If (the ticket is urgent and category is \"technical\"), send the ticket to the priority queue.' in workflow; preserve earlier exceptions and route this ticket to priority.",
+      "counterexample": {
+        "ticket": {
+          "category": "technical",
+          "urgent": true,
+          "waiting": 30
+        },
+        "expected_route": "priority",
+        "actual_route": "escalation"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "R1": "reviewed",
+      "R2": "reviewed",
+      "R3": "reviewed",
+      "R4": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 3.7132645000001503,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "0b1810d4716ddab10e4d3d66313b34c142997c9e1d09c748ac15e514260ff902",
+      "request_sha256": "d19b7e0892cb0048a2e4a33852d7f4bdb3cc16b4c28d6ce365d4ca9b422d70e4",
+      "request_bytes": 6997,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "d19b7e0892cb0048a2e4a33852d7f4bdb3cc16b4c28d6ce365d4ca9b422d70e4",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:47:09.634174Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1635,
+            "eval_count": 21
+          },
+          "response_sha256": "f72a0c5ad02621596eb57aed6e1ca45d8283a2ab444b921e89e29b10e468449e",
+          "response": "{\"coverage\": [\"R1\",\"R2\",\"R3\",\"R4\"],\"claims\":[]}",
+          "result": "validated",
+          "seconds": 3.7099387909984216
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "d05cd3aceb024566fee6254d8b78050129967821e59df9d2605b5616bc99fa58"
+    }
+  }
+}

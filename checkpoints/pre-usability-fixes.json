@@ -1,0 +1,18 @@
+{
+  "purpose": "Observed pre-fix model ambiguity and Markdown ticket-interface checkpoint; existing real responses and data are preserved, not regenerated.",
+  "sha256": "d74ee99f6a525d7b6432ad8861b3089ffd78fd5d1d991fef2a1b0f18f39c202d",
+  "files": {
+    "reviewer/__init__.py": "fdd166da25c42edccebf1da6b9bcdebab205e1152bd3c51b3a038b59c9fc5367",
+    "reviewer/prompt.txt": "4081c0dba284d179af5e255204246e33b30b9036ef78a0a76d90204f7882f237",
+    "reviewer/model.py": "67b108a2c74e25d1efda8a1fb76cf156792118246c707e9c1c2b079de29d9891",
+    "reviewer/engine.py": "377484fcb031199a918ca3e623bcae6e8c5b89dc519ba857008c184effc7c0f3",
+    "reviewer/markdown.py": "b86b2e51426349762b81b19313493845d952c0498b3604acacdbce2e83f18aa4",
+    "reviewer/english.py": "260490fa74dfc51f8f73ef99fc6d72a7a0b795c6bb2dac7c3abb455621597316",
+    "reviewer/language.py": "b37145684950b9b3c2fa134438d17e6637ca58db6ac2c6ce5f3957a1045a6e00",
+    "reviewer/contracts.py": "4f30fce5892c8043127bc1b7505b7ae16fd9fb69110a6a487d80efd21d32d5a7",
+    "reviewer/__main__.py": "10c088bd8310fa12e293be24ec4cb3f3ce90d7373ccc6317e1b7bfbb6770feff",
+    "schemas/report.schema.json": "4cfc44ec8bdb4e03dbbe4ee4cf6030021b1b99602f4760f07f521489fa3de38c",
+    "schemas/bundle.schema.json": "1ca0391bfeb50c628ba0e6c09d409a6a02d3914cfc4cc623fe4a8f3b076722b0",
+    "schemas/model-report.schema.json": "30c708096765c5c9131c93601e58aa5a0d2c7c0c54835fb8566e88c15d32a4ae"
+  }
+}

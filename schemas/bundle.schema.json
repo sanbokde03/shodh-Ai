@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Review bundle 1.0",
+  "type": "object",
+  "required": ["schema_version", "id", "revision", "fields", "requirements", "specification", "workflow", "snippets", "approvals"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"enum": ["1.0"]},
+    "id": {"$ref": "#/$defs/id"},
+    "revision": {"type": "integer", "minimum": 1},
+    "fields": {"type": "object", "minProperties": 1, "maxProperties": 8, "additionalProperties": {"$ref": "#/$defs/field"}},
+    "requirements": {"type": "array", "minItems": 1, "maxItems": 64, "items": {"$ref": "#/$defs/source"}},
+    "specification": {"type": "object", "required": ["version", "rules"], "additionalProperties": false, "properties": {
+      "version": {"type": "integer", "minimum": 1},
+      "rules": {"type": "array", "maxItems": 64, "items": {"type": "object", "required": ["id", "order", "when", "route"], "additionalProperties": false, "properties": {
+        "id": {"$ref": "#/$defs/id"}, "order": {"type": "integer"}, "rule_ref": {"$ref": "#/$defs/id"}, "when": {"$ref": "#/$defs/expression"}, "route": {"$ref": "#/$defs/id"}
+      }}}
+    }},
+    "workflow": {"type": "object", "required": ["version", "entry", "nodes"], "additionalProperties": false, "properties": {
+      "version": {"type": "integer", "minimum": 1}, "entry": {"$ref": "#/$defs/id"},
+      "nodes": {"type": "array", "minItems": 1, "maxItems": 128, "items": {"anyOf": [
+        {"type": "object", "required": ["id", "kind", "when", "true", "false"], "additionalProperties": false, "properties": {
+          "id": {"$ref": "#/$defs/id"}, "kind": {"enum": ["decision"]}, "when": {"$ref": "#/$defs/expression"}, "true": {"$ref": "#/$defs/id"}, "false": {"$ref": "#/$defs/id"}, "rule_ref": {"$ref": "#/$defs/id"}, "snippet_id": {"$ref": "#/$defs/id"}
+        }},
+        {"type": "object", "required": ["id", "kind", "route"], "additionalProperties": false, "properties": {
+          "id": {"$ref": "#/$defs/id"}, "kind": {"enum": ["route"]}, "route": {"$ref": "#/$defs/id"}, "snippet_id": {"$ref": "#/$defs/id"}
+        }}
+      ]}}
+    }},
+    "snippets": {"type": "array", "maxItems": 32, "items": {"type": "object", "required": ["id", "version", "code"], "additionalProperties": false, "properties": {
+      "id": {"$ref": "#/$defs/id"}, "version": {"type": "integer", "minimum": 1}, "code": {"type": "string", "minLength": 1, "maxLength": 20000}
+    }}},
+    "example_tickets": {"type": "array", "maxItems": 128, "items": {"type": "object", "additionalProperties": {"type": ["integer", "boolean", "string", "null"]}}},
+    "approvals": {"type": "array", "maxItems": 128, "items": {"type": "object", "required": ["id", "rule_ref", "status", "from_revision", "to_revision", "sequence", "base_version", "version", "text"], "additionalProperties": false, "properties": {
+      "id": {"$ref": "#/$defs/id"}, "rule_ref": {"$ref": "#/$defs/id"}, "status": {"enum": ["approved", "proposed", "rejected"]},
+      "from_revision": {"type": "integer", "minimum": 1}, "to_revision": {"type": "integer", "minimum": 1}, "sequence": {"type": "integer", "minimum": 1},
+      "base_version": {"type": "integer", "minimum": 1}, "version": {"type": "integer", "minimum": 2}, "text": {"type": "string", "minLength": 1, "maxLength": 4000}
+    }}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_-]{0,79}$"},
+    "source": {"type": "object", "required": ["id", "order", "version", "location", "text"], "additionalProperties": false, "properties": {
+      "id": {"$ref": "#/$defs/id"}, "order": {"type": "integer"}, "version": {"type": "integer", "minimum": 1},
+      "location": {"type": "string", "minLength": 1, "maxLength": 200}, "text": {"type": "string", "minLength": 1, "maxLength": 4000}
+    }},
+    "field": {"anyOf": [
+      {"type": "object", "required": ["type", "unit"], "additionalProperties": false, "properties": {"type": {"enum": ["number"]}, "unit": {"enum": ["seconds", "minutes", "hours", "count"]}}},
+      {"type": "object", "required": ["type"], "additionalProperties": false, "properties": {"type": {"enum": ["boolean"]}}},
+      {"type": "object", "required": ["type", "values"], "additionalProperties": false, "properties": {"type": {"enum": ["enum"]}, "values": {"type": "array", "minItems": 1, "maxItems": 16, "items": {"type": "string", "minLength": 1}}}}
+    ]},
+    "expression": {"anyOf": [
+      {"type": "boolean"},
+      {"type": "object", "required": ["op", "field"], "additionalProperties": false, "properties": {"op": {"enum": ["missing"]}, "field": {"$ref": "#/$defs/id"}}},
+      {"type": "object", "required": ["op", "field", "value"], "additionalProperties": false, "properties": {
+        "op": {"enum": ["eq", "ne", "lt", "lte", "gt", "gte"]}, "field": {"$ref": "#/$defs/id"}, "value": {"type": ["string", "number", "boolean", "null"]}, "unit": {"enum": ["seconds", "minutes", "hours", "count"]}
+      }},
+      {"type": "object", "required": ["op", "args"], "additionalProperties": false, "properties": {"op": {"enum": ["and", "or"]}, "args": {"type": "array", "minItems": 2, "maxItems": 16, "items": {"$ref": "#/$defs/expression"}}}},
+      {"type": "object", "required": ["op", "arg"], "additionalProperties": false, "properties": {"op": {"enum": ["not"]}, "arg": {"$ref": "#/$defs/expression"}}}
+    ]}
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "summary": "1 problem found.",
+  "mode": "ai",
+  "findings": [
+    {
+      "problem": "This ticket should go to escalation, but the workflow returns normal.",
+      "severity": "blocker",
+      "rule_ref": "policy_73123_2",
+      "artifact": "workflow",
+      "version": 9,
+      "location": "Workflow step 'n3': condition",
+      "reference": "/nodes/2",
+      "evidence": [
+        {
+          "artifact": "source",
+          "version": 1,
+          "location": "policy/paragraph/3",
+          "quote": "If waiting time is at least 63 minutes, escalate the ticket."
+        }
+      ],
+      "correction": "Implement 'If waiting time is at least 63 minutes, escalate the ticket.' in workflow; preserve earlier exceptions and route this ticket to escalation.",
+      "counterexample": {
+        "ticket": {
+          "category": "billing",
+          "waiting": 63
+        },
+        "expected_route": "escalation",
+        "actual_route": "normal"
+      }
+    }
+  ],
+  "coverage": {
+    "rules": {
+      "policy_48444_0": "reviewed",
+      "policy_47285_1": "reviewed",
+      "policy_73123_2": "reviewed",
+      "policy_25513_3": "reviewed"
+    },
+    "unreviewed": []
+  },
+  "check_results": [
+    {
+      "check": "contracts and approvals",
+      "status": "PASS"
+    },
+    {
+      "check": "code syntax:main",
+      "status": "PASS"
+    },
+    {
+      "check": "specification semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "workflow semantics",
+      "status": "CHANGES_REQUIRED"
+    },
+    {
+      "check": "code semantics",
+      "status": "PASS"
+    },
+    {
+      "check": "model review",
+      "status": "PASS"
+    }
+  ],
+  "resources": {
+    "seconds": 5.596449500000745,
+    "model_calls": 1,
+    "model_retries": 0
+  },
+  "audit": {
+    "model": {
+      "client": "live-local-ollama",
+      "configuration": {
+        "model": "qwen3.5:9b",
+        "temperature": 0,
+        "timeout_seconds": 90,
+        "max_attempts": 2,
+        "max_output_tokens": 2048,
+        "max_request_bytes": 200000,
+        "context_window": 32768,
+        "thinking": false
+      },
+      "prompt_sha256": "98f5bdc78488bc5e74b3ae818d4034286a42a7953283f11beaaf203db7a6c4ce",
+      "response_schema_sha256": "9ae6f044350bed9cca77de2486d01376f009a7c887cfe08296d1bfc150ca65ae",
+      "request_sha256": "bb75bf69c8b67d6cae15e7511d857db1e5b1b4564b7665b9efa591f6affaff35",
+      "request_bytes": 6927,
+      "attempts": [
+        {
+          "attempt": 1,
+          "request_sha256": "bb75bf69c8b67d6cae15e7511d857db1e5b1b4564b7665b9efa591f6affaff35",
+          "transport": {
+            "model": "qwen3.5:9b",
+            "created_at": "2026-11-17T22:47:25.543827Z",
+            "done_reason": "stop",
+            "prompt_eval_count": 1645,
+            "eval_count": 50
+          },
+          "response_sha256": "54a5d102ace150c353845d557a744adf526de4d5d4b4d39486d24e5c9cb68663",
+          "response": "{\"coverage\": [\"policy_48444_0\",\"policy_47285_1\",\"policy_73123_2\",\"policy_25513_3\"],\"claims\": []}",
+          "result": "validated",
+          "seconds": 5.592638957999952
+        }
+      ],
+      "calls": 1,
+      "retries": 0,
+      "requested_rules": [
+        "policy_48444_0",
+        "policy_47285_1",
+        "policy_73123_2",
+        "policy_25513_3"
+      ],
+      "scope": "residual_ambiguity_of_formal_policy"
+    },
+    "provenance": {
+      "reviewer_version": "0.6.0",
+      "cache": "disabled",
+      "bundle_sha256": "04bebee833ddae8ba1e0d483fd6635fbf1cc8c6aaa2ffd342ff7135b6b265b97"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "reason": "Correct age/attempt checks point to the wrong destination.",
+  "target": {
+    "artifact": "workflow",
+    "rule_ref": "policy_54579_2",
+    "location": "/nodes/2"
+  },
+  "oracle": {
+    "age": "age_54579",
+    "tries": "attempts_54579",
+    "urgent": "urgent_54579",
+    "topic": "topic_54579",
+    "threshold_seconds": 1440,
+    "minimum": 2,
+    "priority_minimum": 7,
+    "routes": [
+      "Manual_54579",
+      "Priority_54579",
+      "Escalation_54579",
+      "Normal_54579"
+    ]
+  }
+}

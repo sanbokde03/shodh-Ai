@@ -1,0 +1,25 @@
+{
+  "status": "CHANGES_REQUIRED",
+  "kind": "defective",
+  "reason": "Missing category and urgent/enough attempts overlap; policy requires manual but workflow prioritizes first.",
+  "target": {
+    "artifact": "workflow",
+    "rule_ref": "policy_19174_0",
+    "location": "/nodes/1"
+  },
+  "oracle": {
+    "age": "age_19174",
+    "tries": "attempts_19174",
+    "urgent": "urgent_19174",
+    "topic": "topic_19174",
+    "threshold_seconds": 1140,
+    "minimum": 3,
+    "priority_minimum": 7,
+    "routes": [
+      "Manual_19174",
+      "Priority_19174",
+      "Escalation_19174",
+      "Normal_19174"
+    ]
+  }
+}

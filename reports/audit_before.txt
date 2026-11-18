@@ -1,0 +1,110 @@
+test_code_citations_follow_the_linked_subtree (test_audit_regressions.AuditRegressions.test_code_citations_follow_the_linked_subtree) ... FAIL
+test_opposite_approval_decisions_are_unresolved (test_audit_regressions.AuditRegressions.test_opposite_approval_decisions_are_unresolved) ... FAIL
+test_out_of_scope_rejection_is_not_a_conflict (test_audit_regressions.AuditRegressions.test_out_of_scope_rejection_is_not_a_conflict) ... ok
+test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) ... 
+  test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_boundary') ... FAIL
+  test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_branch') ... FAIL
+  test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_stale_revision') ... FAIL
+  test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_code') ... FAIL
+test_proposal_and_approval_can_coexist (test_audit_regressions.AuditRegressions.test_proposal_and_approval_can_coexist) ... ok
+test_related_structured_evidence_remains_valid (test_audit_regressions.AuditRegressions.test_related_structured_evidence_remains_valid) ... ok
+test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) ... 
+  test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) (artifact='specification') ... FAIL
+  test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) (artifact='workflow') ... FAIL
+
+======================================================================
+FAIL: test_code_citations_follow_the_linked_subtree (test_audit_regressions.AuditRegressions.test_code_citations_follow_the_linked_subtree)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 66, in test_code_citations_follow_the_linked_subtree
+    self.assertEqual(review(b, CitingClient(0, "code", "wait_only:2"))["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INCOMPLETE'
+- PASS
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_opposite_approval_decisions_are_unresolved (test_audit_regressions.AuditRegressions.test_opposite_approval_decisions_are_unresolved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 35, in test_opposite_approval_decisions_are_unresolved
+    self.assertEqual(r["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INCOMPLETE'
+- PASS
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_boundary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 80, in test_primary_locations_identify_the_responsible_decision
+    self.assertTrue(any(f["location"] == expected for f in findings),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    [(f["location"], f["rule_ref"]) for f in findings])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [('/nodes/0', 'R3')]
+
+======================================================================
+FAIL: test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_branch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 80, in test_primary_locations_identify_the_responsible_decision
+    self.assertTrue(any(f["location"] == expected for f in findings),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    [(f["location"], f["rule_ref"]) for f in findings])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [('/nodes/0', 'R3')]
+
+======================================================================
+FAIL: test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_stale_revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 80, in test_primary_locations_identify_the_responsible_decision
+    self.assertTrue(any(f["location"] == expected for f in findings),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    [(f["location"], f["rule_ref"]) for f in findings])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [('/rules/3', 'R3')]
+
+======================================================================
+FAIL: test_primary_locations_identify_the_responsible_decision (test_audit_regressions.AuditRegressions.test_primary_locations_identify_the_responsible_decision) (case='defect_code')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 80, in test_primary_locations_identify_the_responsible_decision
+    self.assertTrue(any(f["location"] == expected for f in findings),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    [(f["location"], f["rule_ref"]) for f in findings])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [('main:8', 'R3')]
+
+======================================================================
+FAIL: test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) (artifact='specification')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 53, in test_unrelated_structured_evidence_is_rejected
+    self.assertEqual(r["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INCOMPLETE'
+- PASS
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_unrelated_structured_evidence_is_rejected (test_audit_regressions.AuditRegressions.test_unrelated_structured_evidence_is_rejected) (artifact='workflow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT>/tests/test_audit_regressions.py", line 53, in test_unrelated_structured_evidence_is_rejected
+    self.assertEqual(r["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INCOMPLETE'
+- PASS
++ INCOMPLETE
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.034s
+
+FAILED (failures=8)
